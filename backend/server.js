@@ -5,7 +5,13 @@ const {v4:uuid} = require("uuid")
 
 const app = express();
 
-const Port = 3001;
+const Port = 5173;
+
+
+app.use(cors());
+
+app.use(bodyParser.json());
+
 app.listen(Port, ()=>{
-    console.log(`Servidor rodando na porta http://locahost:${Port}`)
+    console.log(`Servidor rodando na porta http://localhost:${Port}`)
 })
