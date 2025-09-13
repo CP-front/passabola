@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
 import { useState } from "react"
+import logo from "../assets/passaBola_3x1.png";
+
 
 const Nav = () => {
 
@@ -7,11 +9,10 @@ const Nav = () => {
     <header className="bg-white border-b border-[#d9d9d9] px-6 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-[#8b5cf6] rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-sm">PB</span>
-          </div>
-          <span className="font-semibold text-[#000000]">Passa a Bola</span>
+          <div className="flex items-center justify-center">
+            <img src={logo} alt="Passa a Bola" className="h-23 w-auto"></img>
         </div>
+      </div>
 
         <nav className="hidden md:flex items-center gap-8">
           <a href="#funcionalidades" className="font-semibold text-[#8b5cf6] hover:text-[#000000] transition-colors">
