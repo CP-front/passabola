@@ -8,19 +8,19 @@ function App() {
   
 
   return (
-      <BrowserRouter>
+    <BrowserRouter>
 
     <Nav/>
-    <main>
+    <div className="min-h-screen bg-[#f2f2f2]">
 
       <Routes>
   
-        <Route path='/error' element={<Error/>}/>
+        <Route path="*" element={<Error/>}/>
 
-        <Route path='/home' element={<Home/>}/>
+        <Route path="/" element={<Home/>}/>
 
       </Routes>
-    </main>
+    </div>
     <Footer/>
 
     </BrowserRouter>
