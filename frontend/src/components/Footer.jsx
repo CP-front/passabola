@@ -1,3 +1,5 @@
+import passaBola from "../assets/passaBola_3x1branco.png";
+
 const Footer = () => {
   return (
      <footer className="bg-[#4C1D8F] text-white px-6 py-12">
@@ -5,10 +7,7 @@ const Footer = () => {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                  <span className="text-[#4c1d8f] font-bold text-sm">PB</span>
-                </div>
-                <span className="font-semibold">Passa a Bola</span>
+                <img src={passaBola} alt="Passa Bola" className="w-55 h-30"/>
               </div>
               <p className="text-[#a990e2] text-sm">
                 Democratizando e profissionalizando a participação de meninas e mulheres no futebol feminino.
