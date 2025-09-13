@@ -9,34 +9,28 @@ import Time from './routes/Time'
 import Posicao from './routes/Posicao'
 
 function App() {
-  
-
   return (
     <BrowserRouter>
+      {/* Navbar fixa no topo */}
+      <Nav />
 
-    <Nav/>
-    <div className="min-h-screen bg-[#f2f2f2]">
+      {/* Conteúdo principal (as páginas) */}
+      <div className="min-h-screen bg-[#f2f2f2]">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/explorar" element={<Explorar />} />
+          <Route path="/explorar/encontros" element={<Encontros />} />
+          <Route path="/explorar/encontros/time" element={<Time />} />
+          <Route path="/explorar/encontros/time/posicao" element={<Posicao />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </div>
 
-      <Routes>
-  
-        <Route path="*" element={<Error/>}/>
-
-        <Route path="/" element={<Home/>}/>
-
-        <Route path="/explorar" element={<Explorar/>}/>
-
-        <Route path="/explorar/encontros" element={<Encontros/>}/>
-
-        <Route path="/explorar/encontros/time" element={<Time/>}/>
-
-        <Route path="/explorar/encontros/time/posicao" element={<Posicao/>}/>
-
-      </Routes>
-    </div>
-    <Footer/>
-
+      {/* Footer fixo no final */}
+      <Footer />
     </BrowserRouter>
-  )
+  );
 }
+
 
 export default App
