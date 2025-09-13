@@ -26,10 +26,10 @@ const Nav = () => {
         </nav>
 
         <div className="flex items-center space-x-3">
-        <button className="px-4 py-1 border border-purple-600 rounded-md text-purple-600 hover:bg-purple-50 cursor-pointer transition">
+        <button className="px-4 py-1 border border-purple-600 rounded-md text-purple-600 hover:bg-[#4C1D8F] hover:text-white cursor-pointer transition">
           Entrar
         </button>
-        <button className="px-4 py-1 rounded-md text-white bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-90 cursor-pointer transition">
+        <button className="px-4 py-1 rounded-md text-white bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-80 cursor-pointer transition">
           Cadastrar
         </button>
       </div>

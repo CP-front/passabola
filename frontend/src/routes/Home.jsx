@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <section className="bg-gray-50 text-center px-6 py-16">
       <div className="max-w-3xl mx-auto">
-        <span className="inline-flex items-center px-4 py-1.5 text-sm font-medium rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-sm">
+        <span className="inline-flex items-center px-4 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-sm">
           <span className="mr-2">🏆</span> Revolucionando o Futebol Feminino
         </span>
 
@@ -15,7 +15,7 @@ const Home = () => {
         </h1>
 
         {/* Subtítulo */}
-        <p className="mt-4 text-lg text-purple-600">
+        <p className="mt-4 text-lg font-semibold text-purple-600">
           A plataforma do Passa a Bola conecta meninas e mulheres apaixonadas por
           futebol, organizando encontros semanais de forma simples, transparente
           e profissional.
@@ -23,10 +23,10 @@ const Home = () => {
 
         {/* Botões */}
         <div className="mt-8 flex justify-center space-x-4">
-          <button className="px-6 py-3 rounded-md font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 shadow hover:opacity-90 transition">
+          <button className="px-6 py-3 rounded-md font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 shadow hover:opacity-90 transition transform hover:scale-105 hover:shadow-lg cursor-pointer">
             📅 Participar dos encontros
           </button>
-          <button className="px-6 py-3 rounded-md font-medium border border-purple-600 text-purple-700 hover:bg-purple-50 transition flex items-center space-x-2">
+          <button className="px-6 py-3 rounded-md font-medium border border-purple-600 text-purple-700 hover:bg-purple-50 transition transform hover:scale-105 hover:shadow-lg flex items-center space-x-2 cursor-pointer">
             <span>⚙</span>
             <span>Saiba Mais</span>
           </button>
@@ -48,8 +48,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      {/* Seção de funcionalidades */}
+      
       <div className="mt-16">
         <h2 className="text-3xl font-bold text-[#4C1D8F]">
           Funcionalidades da Plataforma
@@ -59,73 +58,152 @@ const Home = () => {
           experiência de futebol feminino do Brasil
         </p>
       </div>
+      
+      <section className="bg-gray-50 px-6 py-16">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        {/* Card 1 */}
+        <div className="bg-white rounded-lg shadow-sm p-6 text-center transition transform hover:scale-105 hover:shadow-lg">
+          <h3 className="text-lg font-semibold text-[#4C1D8F]">Times Equilibrados</h3>
+          <p className="mt-2 text-sm text-purple-600">
+            Sistema inteligente de montagem de times 7x7 com posições específicas para garantir jogos equilibrados e divertidos.
+          </p>
+        </div>
+
+        {/* Card 2 */}
+        <div className="bg-white rounded-lg shadow-sm p-6 text-center transition transform hover:scale-105 hover:shadow-lg">
+          <h3 className="text-lg font-semibold text-[#4C1D8F]">Encontros Semanais</h3>
+          <p className="mt-2 text-sm text-purple-600">
+            Organização automática de encontros semanais com cronograma fixo e previsibilidade para todas as participantes.
+          </p>
+        </div>
+
+        {/* Card 3 */}
+        <div className="bg-white rounded-lg shadow-sm p-6 text-center transition transform hover:scale-105 hover:shadow-lg">
+          <h3 className="text-lg font-semibold text-[#4C1D8F]">Sistema de Comprometimento</h3>
+          <p className="mt-2 text-sm text-purple-600">
+            Regras claras e automatizadas para garantir responsabilidade e respeito entre todas as jogadoras.
+          </p>
+        </div>
+
+        {/* Card 4 */}
+        <div className="bg-white rounded-lg shadow-sm p-6 text-center transition transform hover:scale-105 hover:shadow-lg">
+          <h3 className="text-lg font-semibold text-[#4C1D8F]">Transparência Total</h3>
+          <p className="mt-2 text-sm text-purple-600">
+            Visualização em tempo real das posições disponíveis, times formados e lista de espera de forma transparente.
+          </p>
+        </div>
+
+        {/* Card 5 */}
+        <div className="bg-white rounded-lg shadow-sm p-6 text-center transition transform hover:scale-105 hover:shadow-lg">
+          <h3 className="text-lg font-semibold text-[#4C1D8F]">Desenvolvimento Esportivo</h3>
+          <p className="mt-2 text-sm text-purple-600">
+            Ambiente seguro e organizado para meninas desenvolverem suas habilidades no futebol com regularidade.
+          </p>
+        </div>
+
+        {/* Card 6 */}
+        <div className="bg-white rounded-lg shadow-sm p-6 text-center transition transform hover:scale-105 hover:shadow-lg">
+          <h3 className="text-lg font-semibold text-[#4C1D8F]">Gestão Automatizada</h3>
+          <p className="mt-2 text-sm text-purple-600">
+            Eliminação de planilhas e grupos caóticos - tudo gerenciado automaticamente pela plataforma.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section className="bg-gray-50 py-16 px-6">
+      <div className="max-w-6xl mx-auto text-center">
+        
+        {/* Badge */}
+        <span className="inline-block mb-8 px-5 py-2 text-sm font-medium text-white bg-gradient-to-r from-pink-500 to-purple-600 rounded-full shadow">
+          Como funciona
+        </span>
+
+        {/* Title */}
+        <h2 className="text-3xl font-bold text-[#4C1D8F]">
+          Simples, Organizado e Eficiente
+        </h2>
+
+        {/* Subtitle */}
+        <p className="mt-3 text-lg text-purple-600 max-w-2xl mx-auto">
+          Em 4 passos simples você faz parte da maior rede de futebol feminino organizado do Brasil.
+        </p>
+      </div>
+
+      {/* Steps Grid */}
+      <div className="mt-12 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">
+        
+        {/* Card 1 */}
+        <div className="bg-white rounded-lg shadow-sm p-6 transition transform hover:scale-105 hover:shadow-lg">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold">
+              1
+            </div>
+            <span className="text-purple-600 text-2xl">⚙️</span>
+          </div>
+          <p className="mt-4 text-purple-700 font-semibold">Cadastro</p>
+          <ul className="mt-2 space-y-1 text-sm text-purple-600 list-disc list-inside">
+            <li>Cadastro simples e rápido</li>
+            <li>Perfil personalizado</li>
+            <li>Acesso imediato</li>
+          </ul>
+        </div>
+
+        {/* Card 2 */}
+        <div className="bg-white rounded-lg shadow-sm p-6 transition transform hover:scale-105 hover:shadow-lg">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold">
+              2
+            </div>
+            <span className="text-purple-600 text-2xl">📍</span>
+          </div>
+          <p className="mt-4 text-purple-700 font-semibold">Escolha sua Posição</p>
+          <ul className="mt-2 space-y-1 text-sm text-purple-600 list-disc list-inside">
+            <li>Goleira, defensora</li>
+            <li>Meio-campista, atacante</li>
+            <li>Máximo 14 jogadoras</li>
+          </ul>
+        </div>
+
+        {/* Card 3 */}
+        <div className="bg-white rounded-lg shadow-sm p-6 transition transform hover:scale-105 hover:shadow-lg">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold">
+              3
+            </div>
+            <span className="text-purple-600 text-2xl">👥</span>
+          </div>
+          <p className="mt-4 text-purple-700 font-semibold">Formação dos Times</p>
+          <ul className="mt-2 space-y-1 text-sm text-purple-600 list-disc list-inside">
+            <li>2 times completos</li>
+            <li>Lista de reservas</li>
+            <li>Notificações automáticas</li>
+          </ul>
+        </div>
+
+        {/* Card 4 */}
+        <div className="bg-white rounded-lg shadow-sm p-6 transition transform hover:scale-105 hover:shadow-lg">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold">
+              4
+            </div>
+            <span className="text-purple-600 text-2xl">📅</span>
+          </div>
+          <p className="mt-4 text-purple-700 font-semibold">Encontro Semanal</p>
+          <ul className="mt-2 space-y-1 text-sm text-purple-600 list-disc list-inside">
+            <li>Local fixo</li>
+            <li>Horário regular</li>
+            <li>Ambiente seguro</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
 
     </section>
-    // <section className="px-6 py-16 bg-gradient-to-br from-[#eeebff] to-[#fde3ff]">
-    //     <div className="max-w-7xl mx-auto">
-    //       <div className="grid lg:grid-cols-2 gap-12 items-center">
-    //         <div>
-    //           <h1 className="text-4xl lg:text-5xl font-bold text-[#000000] mb-6 text-balance">
-    //             Encontros de Futebol Feminino
-    //             <span className="text-[#8b5cf6]"> Organizados e Automatizados</span>
-    //           </h1>
-    //           <p className="text-lg text-[#000000] mb-8 text-pretty">
-    //             Conecte-se com outras jogadoras, organize partidas e transforme o futebol feminino no Brasil através da
-    //             nossa plataforma inovadora.
-    //           </p>
-
-    //           <div className="flex flex-col sm:flex-row gap-4 mb-8">
-    //             <Button className="bg-[#8b5cf6] hover:bg-[#4c1d8f] text-white px-8 py-3">Começar Agora</Button>
-    //             <Button variant="outline" className="border-[#8b5cf6] text-[#8b5cf6] hover:bg-[#eeebff] bg-transparent">
-    //               Saiba Mais
-    //             </Button>
-    //           </div>
-
-    //           <div className="bg-white rounded-lg p-6 shadow-sm">
-    //             <h3 className="font-semibold text-[#000000] mb-4">Funcionalidades da Plataforma</h3>
-    //             <div className="grid grid-cols-3 gap-4 text-center">
-    //               <div>
-    //                 <div className="text-2xl font-bold text-[#8b5cf6]">500+</div>
-    //                 <div className="text-sm text-[#000000]">Jogadoras</div>
-    //               </div>
-    //               <div>
-    //                 <div className="text-2xl font-bold text-[#e8269a]">150+</div>
-    //                 <div className="text-sm text-[#000000]">Partidas</div>
-    //               </div>
-    //               <div>
-    //                 <div className="text-2xl font-bold text-[#8b5cf6]">25+</div>
-    //                 <div className="text-sm text-[#000000]">Cidades</div>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
-
-    //         <div className="relative">
-    //           <div className="bg-white rounded-2xl p-8 shadow-lg">
-    //             <div className="space-y-4">
-    //               <div className="flex items-center gap-3">
-    //                 <div className="w-10 h-10 bg-[#eeebff] rounded-full flex items-center justify-center">
-    //                   <Calendar className="w-5 h-5 text-[#8b5cf6]" />
-    //                 </div>
-    //                 <div>
-    //                   <div className="font-semibold text-[#000000]">Próxima Partida</div>
-    //                   <div className="text-sm text-[#000000]">Sábado, 15:00</div>
-    //                 </div>
-    //               </div>
-
-    //               <div className="bg-[#fbebff] rounded-lg p-4">
-    //                 <div className="flex items-center justify-between mb-2">
-    //                   <span className="font-medium text-[#000000]">Campo Central</span>
-    //                   <Badge className="bg-[#8b5cf6] text-white">Confirmado</Badge>
-    //                 </div>
-    //                 <div className="text-sm text-[#000000]">8 jogadoras confirmadas</div>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </section>
   )
 }
 
