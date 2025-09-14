@@ -183,7 +183,7 @@ const Home = () => {
           </ul>
         </div>
 
-        {/* Card 4 */}
+
         <div className="bg-white rounded-lg shadow-sm p-6 transition transform hover:scale-105 hover:shadow-lg">
           <div className="flex items-center gap-3">
             <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold">
@@ -200,8 +200,96 @@ const Home = () => {
         </div>
       </div>
     </section>
+    <section className="bg-white px-8 py-16">
 
+      <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-start">
 
+        <div>
+          <span className="inline-block px-4 py-1 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full text-sm font-medium mb-4">
+            Benefícios
+          </span>
+          <h2 className="text-3xl font-bold text-purple-800 mb-4">
+            Transformando o Futebol <br /> Feminino no Brasil
+          </h2>
+          <p className="text-gray-600 mb-8">
+            A plataforma é um primeiro passo para algo maior. Com ela, o Passa a Bola 
+            fortaleceu seu papel como agente transformador do futebol feminino no Brasil.
+          </p>
+
+          <ul className="space-y-6">
+            <li className="flex items-start gap-3">
+              <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-2 rounded-full">
+                ⚡
+              </span>
+              <div>
+                <h3 className="font-semibold text-purple-800">Automatização total</h3>
+                <p className="text-sm text-purple-600">
+                  Eliminação de planilhas e grupos caóticos de mensagem
+                </p>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-2 rounded-full">
+                🛡️
+              </span>
+              <div>
+                <h3 className="font-semibold text-purple-800">Transparência</h3>
+                <p className="text-sm text-purple-600">
+                  Montagem clara dos times e ocupação de posições em tempo real
+                </p>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-2 rounded-full">
+                ❤️
+              </span>
+              <div>
+                <h3 className="font-semibold text-purple-800">Responsabilidade</h3>
+                <p className="text-sm text-purple-600">
+                  Incentivo ao comprometimento e responsabilidade com a equipe
+                </p>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-2 rounded-full">
+                ✨
+              </span>
+              <div>
+                <h3 className="font-semibold text-purple-800">Inclusão Digital</h3>
+                <p className="text-sm text-purple-600">
+                  Facilita o acesso de meninas ao esporte com processos simples
+                </p>
+              </div>
+            </li>
+          </ul>
+
+          <button className="mt-8 px-6 py-3 rounded-lg text-white font-medium bg-gradient-to-r from-pink-500 to-purple-500">
+            Fazer parte da transformação
+          </button>
+        </div>
+        <div className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-8 rounded-2xl shadow-lg">
+          <h3 className="text-xl font-semibold mb-3">
+            Rede colaborativa e segura
+          </h3>
+          <p className="text-sm text-pink-100 mb-6">
+            Criação de uma rede colaborativa e segura para que meninas joguem 
+            com frequência, organização e visibilidade, oferecendo tecnologia 
+            social aplicada às práticas esportivas.
+          </p>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-white/20 rounded-lg py-4 text-center">
+              <p className="text-2xl font-bold">100%</p>
+              <p className="text-sm">Organizado</p>
+            </div>
+            <div className="bg-white/20 rounded-lg py-4 text-center">
+              <p className="text-2xl font-bold">24/7</p>
+              <p className="text-sm">Disponível</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     </section>
   )
