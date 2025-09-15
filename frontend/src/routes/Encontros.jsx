@@ -6,7 +6,7 @@ function Encontros() {
       {/* Cabeçalho */}
       <div className="flex items-center gap-2 mb-8 font-bold">
         <button onClick={() => navigate(-1)}
-        className="flex items-center gap-2 px-4 py-2 border-2 cursor-pointer rounded-md text-sm text-purple-600 border-purple-600 hover:bg-purple-100">
+        className="flex items-center gap-2 px-4 py-2 border-3 cursor-pointer rounded-md text-sm text-purple-600 border-purple-600 hover:bg-purple-100">
           ← Voltar
         </button>
         <h1 className="text-2xl text-purple-700">Encontros Disponíveis</h1>

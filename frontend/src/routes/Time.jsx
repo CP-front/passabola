@@ -10,7 +10,7 @@ export default function Time() {
       <div className="w-full max-w-5xl px-4 mb-6">
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center px-4 py-2 border border-purple-400 text-purple-600 rounded-lg hover:bg-purple-50 transition"
+          className="flex items-center gap-2 px-4 py-2 border-3 cursor-pointer rounded-md text-sm text-purple-600 border-purple-600 hover:bg-purple-100 font-bold"
         >
           ← Voltar
         </button>
