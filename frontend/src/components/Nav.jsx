@@ -16,13 +16,13 @@ const Nav = () => {
       </div>
 
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#funcionalidades" className="font-semibold text-[#8b5cf6] hover:text-[#000000] transition-colors">
+          <a href="http://localhost:5173/" className="font-semibold text-[#8b5cf6] hover:text-[#000000] transition-colors">
             Funcionalidades
           </a>
-          <a href="#sobre" className="font-semibold text-[#8b5cf6] hover:text-[#000000] transition-colors">
+          <a href="#http://localhost:5173/" className="font-semibold text-[#8b5cf6] hover:text-[#000000] transition-colors">
             Benefícios
           </a>
-          <a href="#contato" className="font-semibold text-[#8b5cf6] hover:text-[#000000] transition-colors">
+          <a href="#http://localhost:5173/" className="font-semibold text-[#8b5cf6] hover:text-[#000000] transition-colors">
             Contato
           </a>
         </nav>

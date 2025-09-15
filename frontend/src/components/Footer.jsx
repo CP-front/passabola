@@ -1,4 +1,4 @@
-
+import { FaInstagram, FaYoutube } from "react-icons/fa";
 import passaBola from "../assets/passaBola_3x1branco.png";
 
 const Footer = () => {
@@ -19,12 +19,12 @@ const Footer = () => {
               <h4 className="font-semibold mb-4">Plataforma</h4>
               <ul className="space-y-2 text-sm text-white/80">
                 <li>
-                  <a href="#" className="text-[#a990e2] hover:text-white">
+                  <a href="http://localhost:5173/" className="text-[#a990e2] hover:text-white">
                     Funcionalidades
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-[#a990e2] hover:text-white">
+                  <a href="http://localhost:5173/" className="text-[#a990e2] hover:text-white">
                     Benefícios
                   </a>
                 </li>
@@ -86,14 +86,18 @@ const Footer = () => {
           </button>
 
           {/* Ícones sociais */}
-          <div className="flex space-x-3 mt-4">
-            <a href="#" className="w-8 h-8 flex items-center justify-center border-2 border-pink-400 rounded-md hover:bg-pink-500 hover:text-white transition">
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a href="#" className="w-8 h-8 flex items-center justify-center border-2 border-pink-400 rounded-md hover:bg-pink-500 hover:text-white transition">
-              <i className="fab fa-youtube"></i>
-            </a>
-          </div>
+        <div className="flex gap-3 mt-4">
+        <a href="https://www.instagram.com/passaabola/" target="_blank" rel="noopener noreferrer"
+        className="p-2 border border-pink-600 rounded-md text-pink-600 hover:bg-pink-600 hover:text-white transition-colors"
+        >
+          <FaInstagram size={22} />
+        </a>
+        <a href="https://www.youtube.com/@passabola"target="_blank"rel="noopener noreferrer"
+        className="p-2 border border-pink-600 rounded-md text-pink-600 hover:bg-pink-600 hover:text-white transition-colors"
+        >
+          <FaYoutube size={22} />
+        </a>
+      </div>
         </div>
       </div>
 
