@@ -1,3 +1,4 @@
+
 import passaBola from "../assets/passaBola_3x1branco.png";
 
 const Footer = () => {

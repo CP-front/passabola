@@ -1,5 +1,6 @@
-
+import { useNavigate } from "react-router-dom";
 const Home = () => {
+  const navigate = useNavigate();
   
   return (
     <section className="bg-gray-50 text-center px-6 py-16">
@@ -23,7 +24,7 @@ const Home = () => {
 
         {/* Botões */}
         <div className="mt-8 flex justify-center space-x-4">
-          <button className="px-6 py-3 rounded-md font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 shadow hover:opacity-90 transition transform hover:scale-105 hover:shadow-lg cursor-pointer">
+          <button onClick={() => navigate("/explorar")}className="px-6 py-3 rounded-md font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 shadow hover:opacity-90 transition transform hover:scale-105 hover:shadow-lg cursor-pointer">
             📅 Participar dos encontros
           </button>
           <button className="px-6 py-3 rounded-md font-medium border border-purple-600 text-purple-700 hover:bg-purple-50 transition transform hover:scale-105 hover:shadow-lg flex items-center space-x-2 cursor-pointer">

@@ -2,7 +2,7 @@ const Explorar = () => {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Conteúdo principal */}
-      <main className="flex-grow bg-gray-50 flex flex-col items-center justify-center px-4 py-12">
+      <main className="flex-grow bg-gray-100 flex flex-col items-center justify-center px-4 py-12">
         {/* Título */}
         <h1 className="text-3xl md:text-4xl font-bold text-purple-800 mb-3 text-center">
           Explorar os Jogos
