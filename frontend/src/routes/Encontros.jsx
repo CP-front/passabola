@@ -1,9 +1,12 @@
+import { useNavigate } from "react-router-dom";
 function Encontros() {
+  const navigate = useNavigate();
   return (
     <main className="px-8 py-12 max-w-5xl mx-auto">
       {/* Cabeçalho */}
       <div className="flex items-center gap-2 mb-8 font-bold">
-        <button className="flex items-center gap-2 px-4 py-2 border-2 cursor-pointer rounded-md text-sm text-purple-600 border-purple-600 hover:bg-purple-100">
+        <button onClick={() => navigate(-1)}
+        className="flex items-center gap-2 px-4 py-2 border-2 cursor-pointer rounded-md text-sm text-purple-600 border-purple-600 hover:bg-purple-100">
           ← Voltar
         </button>
         <h1 className="text-2xl text-purple-700">Encontros Disponíveis</h1>
@@ -24,7 +27,8 @@ function Encontros() {
               14 vagas restantes
             </span>
           </div>
-          <button className="w-full py-2 cursor-pointer font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 rounded-lg hover:opacity-90">
+          <button onClick={() => navigate("/explorar/encontros/time")}
+           className="w-full py-2 cursor-pointer font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 rounded-lg hover:opacity-90">
             Inscreva-se
           </button>
         </div>
@@ -42,7 +46,8 @@ function Encontros() {
               14 vagas restantes
             </span>
           </div>
-          <button className="w-full py-2 cursor-pointer font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 rounded-lg hover:opacity-90">
+          <button onClick={() => navigate("/explorar/encontros/time")}
+          className="w-full py-2 cursor-pointer font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 rounded-lg hover:opacity-90">
             Inscreva-se
           </button>
         </div>

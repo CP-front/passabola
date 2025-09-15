@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
 const Explorar = () => {
+  const navigate = useNavigate();
+  
   return (
     <div className="min-h-screen flex flex-col">
       {/* Conteúdo principal */}
@@ -44,7 +47,7 @@ const Explorar = () => {
 
           {/* Botão */}
           <div className="flex justify-center mt-8">
-            <button
+            <button onClick={() => navigate("/explorar/encontros")}
               type="submit"
               className="w-full md:w-auto bg-gradient-to-r from-purple-600 to-pink-500 text-white px-40 py-3 rounded-lg font-medium shadow hover:opacity-90 transition"
             >

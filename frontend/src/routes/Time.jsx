@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import iconetimes from "../assets/iconepessoas.png"; // png dos bonecos
 
-export default function EscolhaTime() {
+export default function Time() {
   const navigate = useNavigate();
 
   return (
