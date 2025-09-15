@@ -59,7 +59,7 @@ const Home = () => {
         </p>
       </div>
       
-      <section className="bg-gray-50 px-6 py-16">
+      <section className="bg-gray-50 px-6 py-16 rounded-md">
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         
         {/* Card 1 */}
@@ -143,8 +143,11 @@ const Home = () => {
             </div>
             <span className="text-purple-600 text-2xl">⚙️</span>
           </div>
-          <p className="mt-4 text-purple-700 font-semibold">Cadastro</p>
-          <ul className="mt-2 space-y-1 text-sm text-purple-600 list-disc list-inside">
+          <div className="flex text-lg">
+          <p className="mt-4 text-[#4C1D8F] font-semibold ">Cadastro</p>
+          </div>
+          <p className="text-left mt-4 text-purple-700 font-semibold text-sm">Faça seu cadastro gratuito e acesse a área de inscrição para os encontros semanais.</p>
+          <ul className="mt-2 space-y-1 text-sm text-purple-600 text-left list-disc list-inside">
             <li>Cadastro simples e rápido</li>
             <li>Perfil personalizado</li>
             <li>Acesso imediato</li>
@@ -159,8 +162,11 @@ const Home = () => {
             </div>
             <span className="text-purple-600 text-2xl">📍</span>
           </div>
-          <p className="mt-4 text-purple-700 font-semibold">Escolha sua Posição</p>
-          <ul className="mt-2 space-y-1 text-sm text-purple-600 list-disc list-inside">
+          <div className="flex text-lg">
+          <p className="mt-4 text-[#4C1D8F] font-semibold">Escolha sua Posição</p>
+          </div>
+          <p className="text-left mt-4 text-purple-700 font-semibold text-sm">Selecione sua posição preferida no time de futebol 7 por ordem de chegada.</p>
+          <ul className="mt-2 space-y-1 text-sm text-purple-600 text-left list-disc list-inside">
             <li>Goleira, defensora</li>
             <li>Meio-campista, atacante</li>
             <li>Máximo 14 jogadoras</li>
@@ -175,8 +181,11 @@ const Home = () => {
             </div>
             <span className="text-purple-600 text-2xl">👥</span>
           </div>
-          <p className="mt-4 text-purple-700 font-semibold">Formação dos Times</p>
-          <ul className="mt-2 space-y-1 text-sm text-purple-600 list-disc list-inside">
+          <div className="flex text-lg">
+          <p className="mt-4 text-[#4C1D8F] font-semibold">Formação dos Times</p>
+          </div>
+          <p className="text-left mt-4 text-purple-700 font-semibold text-sm">Os times são formados automaticamente com as posições ocupadas da forma transparente.</p>
+          <ul className="mt-2 space-y-1 text-sm text-purple-600 text-left list-disc list-inside">
             <li>2 times completos</li>
             <li>Lista de reservas</li>
             <li>Notificações automáticas</li>
@@ -191,8 +200,11 @@ const Home = () => {
             </div>
             <span className="text-purple-600 text-2xl">📅</span>
           </div>
-          <p className="mt-4 text-purple-700 font-semibold">Encontro Semanal</p>
-          <ul className="mt-2 space-y-1 text-sm text-purple-600 list-disc list-inside">
+          <div className="flex text-lg">
+          <p className="mt-4 text-[#4C1D8F] font-semibold">Encontro Semanal</p>
+          </div>
+          <p className="text-left mt-4 text-purple-700 font-semibold text-sm">Compareça no dia e horário marcado para jogar futebol de forma organizada.</p>
+          <ul className="mt-2 space-y-1 text-sm text-purple-600 text-left list-disc list-inside">
             <li>Local fixo</li>
             <li>Horário regular</li>
             <li>Ambiente seguro</li>
@@ -200,7 +212,7 @@ const Home = () => {
         </div>
       </div>
     </section>
-    <section className="bg-white px-8 py-16">
+    <section className="bg-white rounded-lg px-8 py-16 ">
 
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-start">
 
