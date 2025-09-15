@@ -4,13 +4,15 @@ import { ArrowLeft, Check, Plus } from "lucide-react"
 import { useNavigate } from "react-router-dom";
 
 export default function Posicao() {
+
   const navigate = useNavigate();
+
   const positions = [
     { id: "goleiro", name: "Goleiro", player: "Disponível", available: true },
-    { id: "defensora1", name: "Defensora", player: "Clara Elis", available: false },
+    { id: "defensora1", name: "Defensora", player: "Disponível", available: true },
     { id: "defensora2", name: "Defensora", player: "Disponível", available: true },
     { id: "meia1", name: "Ala", player: "Disponível", available: true },
-    { id: "meia2", name: "Meia", player: "Alessandra Ferreira", available: false },
+    { id: "meia2", name: "Meia", player: "Disponível", available: true },
     { id: "meia3", name: "Ala", player: "Disponível", available: true },
     { id: "atacante", name: "Atacante", player: "Disponível", available: true },
     { id: "reserva1", name: "Reserva", player: "Disponível", available: true },
@@ -19,10 +21,10 @@ export default function Posicao() {
 
   const fieldPositions = [
     { id: "goleiro", x: "50%", y: "90%", filled: false },
-    { id: "defensora1", x: "25%", y: "70%", filled: true },
+    { id: "defensora1", x: "25%", y: "70%", filled: false },
     { id: "defensora2", x: "75%", y: "70%", filled: false },
-    { id: "meia1", x: "20%", y: "50%", filled: false },
-    { id: "meia2", x: "50%", y: "50%", filled: true },
+    { id: "meia1", x: "20%", y: "50%", filled: true },
+    { id: "meia2", x: "50%", y: "50%", filled: false },
     { id: "meia3", x: "80%", y: "50%", filled: false },
     { id: "atacante", x: "50%", y: "25%", filled: false },
   ]
@@ -42,18 +44,8 @@ export default function Posicao() {
         </div>
         <p className="text-sm text-purple-600 ml-28 mb-6">Playball Pompeia - 09/06/2025</p>
       </div>
-      {/* <div>
-      <div className="flex items-center gap-2 mb-8 font-bold">
-        <button onClick={() => navigate(-1)}
-        className="flex items-center gap-2 px-4 py-2 border-2 cursor-pointer rounded-md text-sm text-purple-600 border-purple-600 hover:bg-purple-100">
-          <ArrowLeft className="w-4 h-4" />
-            Voltar
-        </button>
-        <h1 className="text-2xl text-purple-700">Escolha sua posicao - Time Passa</h1>
-      </div>
-      <p className="text-sm text-gray-500 ml-12">Playball Pompeia • 09/06/2025</p>
-      </div> */}
 
+      <div className="px-95">
       <div className="grid lg:grid-cols-2 gap-6 max-w-6xl">
         {/* Soccer Field Section */}
         <div className="bg-white rounded-xl shadow p-6">
@@ -62,10 +54,14 @@ export default function Posicao() {
           <div className="relative bg-green-500 rounded-lg p-4 aspect-[3/4] max-w-md mx-auto">
             {/* Field markings */}
             <div className="absolute inset-2 border-2 border-white rounded">
+
               {/* Center circle */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 border-2 border-white rounded-full"></div>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-white rounded-full"></div>
 
+              {/* Center line */}
+              <div className="absolute left-0 right-0 top-1/2 h-0.5 bg-white -translate-y-1/2"></div>
+        
               {/* Goal areas */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-8 border-2 border-white border-t-0"></div>
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-8 border-2 border-white border-b-0"></div>
@@ -125,6 +121,7 @@ export default function Posicao() {
             Confirmar Inscrição
           </button>
         </div>
+      </div>
       </div>
     </div>
   )
