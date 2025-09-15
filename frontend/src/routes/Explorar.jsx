@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react"
+
 const Explorar = () => {
   const navigate = useNavigate();
   
@@ -7,10 +9,12 @@ const Explorar = () => {
       {/* Conteúdo principal */}
       <main className="flex-grow bg-gray-100 flex flex-col items-center justify-center px-4 py-12">
         {/* Título */}
-       <div className="flex-item-left gap-2 mb-8 font-bold">
-        <button onClick={() => navigate("/")}
-        className="gap-2 px-2 py-2 border-3 cursor-pointer rounded-md text-sm text-purple-600 border-purple-600 hover:bg-purple-100">
-          ← Voltar
+       <div className="w-full max-w-5xl px-4 mb-6">
+        <button
+          onClick={() => navigate("/explorar/encontros")}
+          className="flex items-center gap-2 px-4 py-2 border-2 cursor-pointer rounded-md text-sm text-purple-600 border-purple-600 hover:bg-purple-100 font-bold">
+          <ArrowLeft className="w-4 h-4" />
+           Voltar
         </button>
       </div>
         <h1 className="text-3xl md:text-4xl font-bold text-purple-800 mb-3 text-center">
@@ -55,7 +59,7 @@ const Explorar = () => {
           <div className="flex justify-center mt-8">
             <button onClick={() => navigate("/explorar/encontros")}
               type="submit"
-              className="w-full md:w-auto bg-gradient-to-r from-purple-600 to-pink-500 text-white px-40 py-3 rounded-lg font-medium shadow hover:opacity-90 transition cursor-pointer"
+              className="w-full md:w-auto bg-gradient-to-r from-purple-600 to-pink-500 text-white px-40 py-3 rounded-lg font-medium shadow hover:opacity-90 transition cursor-pointer transform hover:scale-105 hover:shadow-lg"
             >
               🔍 Buscar Encontros
             </button>

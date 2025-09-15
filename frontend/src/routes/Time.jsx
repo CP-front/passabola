@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import iconetimes from "../assets/iconepessoas.png"; // png dos bonecos
+import { ArrowLeft } from "lucide-react"
 
 export default function Time() {
   const navigate = useNavigate();
@@ -9,10 +10,10 @@ export default function Time() {
       {/* Botão voltar */}
       <div className="w-full max-w-5xl px-4 mb-6">
         <button
-          onClick={() => navigate(-1)}
-          className="flex items-center gap-2 px-4 py-2 border-3 cursor-pointer rounded-md text-sm text-purple-600 border-purple-600 hover:bg-purple-100 font-bold"
-        >
-          ← Voltar
+          onClick={() => navigate("/explorar/encontros")}
+          className="flex items-center gap-2 px-4 py-2 border-2 cursor-pointer rounded-md text-sm text-purple-600 border-purple-600 hover:bg-purple-100 font-bold">
+          <ArrowLeft className="w-4 h-4" />
+           Voltar
         </button>
       </div>
 
@@ -33,11 +34,11 @@ export default function Time() {
           </div>
           <h2 className="text-xl font-bold text-purple-600">Time Passa</h2>
           <p className="text-sm bg-purple-100 text-purple-600 px-4 py-1 rounded-full mt-3">
-            5 vagas restantes
+            14 vagas restantes
           </p>
           <button
             onClick={() => navigate("/explorar/encontros/time/posicao")}
-            className="mt-6 w-full py-3 bg-purple-500 text-white font-semibold rounded-lg hover:bg-purple-600 transition cursor-pointer"
+            className="mt-6 w-full py-3 bg-purple-500 text-white font-semibold rounded-lg hover:bg-purple-600 transition cursor-pointer shadow transform hover:scale-105 hover:shadow-lg"
           >
             Escolher Time Passa
           </button>
@@ -50,11 +51,11 @@ export default function Time() {
           </div>
           <h2 className="text-xl font-bold text-pink-600">Time Bola</h2>
           <p className="text-sm bg-pink-100 text-pink-600 px-4 py-1 rounded-full mt-3">
-            3 vagas restantes
+            14 vagas restantes
           </p>
           <button
             onClick={() => navigate("/explorar/encontros/time/posicao")}
-            className="mt-6 w-full py-3 bg-pink-500 text-white font-semibold rounded-lg hover:bg-pink-600 transition cursor-pointer"
+            className="mt-6 w-full py-3 bg-pink-500 text-white font-semibold rounded-lg hover:bg-pink-600 transition cursor-pointer shadow transform hover:scale-105 hover:shadow-lg"
           >
             Escolher Time Bola
           </button>

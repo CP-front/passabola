@@ -24,7 +24,7 @@ const Home = () => {
 
         {/* Botões */}
         <div className="mt-8 flex justify-center space-x-4">
-          <button onClick={() => navigate("/explorar")}className="px-6 py-3 rounded-md font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 shadow hover:opacity-90 transition transform hover:scale-105 hover:shadow-lg cursor-pointer">
+          <button onClick={() => navigate("/explorar")} className="px-6 py-3 rounded-md font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 shadow hover:opacity-90 transition transform hover:scale-105 hover:shadow-lg cursor-pointer">
             📅 Participar dos encontros
           </button>
           <button className="px-6 py-3 rounded-md font-medium border border-purple-600 text-purple-700 hover:bg-purple-50 transition transform hover:scale-105 hover:shadow-lg flex items-center space-x-2 cursor-pointer">
@@ -276,7 +276,7 @@ const Home = () => {
             </li>
           </ul>
 
-          <button className="mt-8 px-6 py-3 rounded-lg text-white font-medium bg-gradient-to-r from-pink-500 to-purple-500">
+          <button onClick={() => navigate("/explorar")} className="mt-8 px-6 py-3 rounded-lg text-white font-medium bg-gradient-to-r from-pink-500 to-purple-500 shadow hover:opacity-90 transition transform hover:scale-105 hover:shadow-lg cursor-pointer">
             Fazer parte da transformação
           </button>
         </div>

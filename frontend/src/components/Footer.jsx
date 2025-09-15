@@ -1,7 +1,9 @@
 import { FaInstagram, FaYoutube } from "react-icons/fa";
 import passaBola from "../assets/passaBola_3x1branco.png";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
   return (
      <footer className="bg-[#4C1D8F] text-white px-6 py-12" id="footer">
         <div className="max-w-7xl mx-auto">
@@ -19,12 +21,12 @@ const Footer = () => {
               <h4 className="font-semibold mb-4">Plataforma</h4>
               <ul className="space-y-2 text-sm text-white/80">
                 <li>
-                  <a href="http://localhost:5173/" className="text-[#a990e2] hover:text-white">
+                  <a onClick={() => navigate("/#funcionalidades")} href="#funcionalidades" className="text-[#a990e2] hover:text-white">
                     Funcionalidades
                   </a>
                 </li>
                 <li>
-                  <a href="http://localhost:5173/" className="text-[#a990e2] hover:text-white">
+                  <a onClick={() => navigate("/#beneficios")} href="/#beneficios" className="text-[#a990e2] hover:text-white">
                     Benefícios
                   </a>
                 </li>
