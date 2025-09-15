@@ -8,7 +8,7 @@ const Explorar = () => {
       <main className="flex-grow bg-gray-100 flex flex-col items-center justify-center px-4 py-12">
         {/* Título */}
        <div className="flex-item-left gap-2 mb-8 font-bold">
-        <button onClick={() => navigate(-1)}
+        <button onClick={() => navigate("/")}
         className="gap-2 px-2 py-2 border-3 cursor-pointer rounded-md text-sm text-purple-600 border-purple-600 hover:bg-purple-100">
           ← Voltar
         </button>

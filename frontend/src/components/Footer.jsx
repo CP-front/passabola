@@ -3,7 +3,7 @@ import passaBola from "../assets/passaBola_3x1branco.png";
 
 const Footer = () => {
   return (
-     <footer className="bg-[#4C1D8F] text-white px-6 py-12">
+     <footer className="bg-[#4C1D8F] text-white px-6 py-12" id="footer">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
@@ -69,7 +69,7 @@ const Footer = () => {
 
             <div>
           <h4 className="font-semibold mb-3">Contato</h4>
-          <button className="flex items-center space-x-2 px-10 py-2 bg-white text-purple-700 rounded-md font-medium hover:bg-gray-100 transition">
+          <button className="flex items-center space-x-2 px-10 py-2 bg-white text-purple-700 rounded-md font-medium hover:bg-purple-700 hover:text-white transition cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" 
               fill="none" viewBox="0 0 24 24" strokeWidth={2} 
               stroke="currentColor" className="w-5 h-5">

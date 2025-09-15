@@ -5,7 +5,7 @@ function Encontros() {
     <main className="px-8 py-12 max-w-5xl mx-auto">
       {/* Cabeçalho */}
       <div className="flex items-center gap-2 mb-8 font-bold">
-        <button onClick={() => navigate(-1)}
+        <button onClick={() => navigate("/explorar/")}
         className="flex items-center gap-2 px-4 py-2 border-3 cursor-pointer rounded-md text-sm text-purple-600 border-purple-600 hover:bg-purple-100">
           ← Voltar
         </button>

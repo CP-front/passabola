@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom"
 import { useState } from "react"
 import passaBola from "../assets/passaBola_3x1fundo.png";
+import { useNavigate } from "react-router-dom";
 
 const Nav = () => {
 
+  const navigate = useNavigate();
   return (
     <nav className="flex items-center justify-between px-6 py-3 bg-white shadow-sm">
       {/* Logo + título */}
@@ -16,13 +18,13 @@ const Nav = () => {
       </div>
 
         <nav className="hidden md:flex items-center gap-8">
-          <a href="http://localhost:5173/" className="font-semibold text-[#8b5cf6] hover:text-[#000000] transition-colors">
+          <a onClick={() => navigate("/#funcionalidades")} href="#funcionalidades" className="font-semibold text-[#8b5cf6] hover:text-[#000000] transition-colors cursor-pointer">
             Funcionalidades
           </a>
-          <a href="#http://localhost:5173/" className="font-semibold text-[#8b5cf6] hover:text-[#000000] transition-colors">
+          <a onClick={() => navigate("/#beneficios")} href="#beneficios" className="font-semibold text-[#8b5cf6] hover:text-[#000000] transition-colors cursor-pointer">
             Benefícios
           </a>
-          <a href="#http://localhost:5173/" className="font-semibold text-[#8b5cf6] hover:text-[#000000] transition-colors">
+          <a onClick={() => navigate("/#footer")} href="#footer" className="font-semibold text-[#8b5cf6] hover:text-[#000000] transition-colors cursor-pointer">
             Contato
           </a>
         </nav>

@@ -50,7 +50,7 @@ const Home = () => {
         </div>
       </div>
       
-      <div className="mt-16">
+      <div className="mt-16" id="funcionalidades">
         <h2 className="text-3xl font-bold text-[#4C1D8F]">
           Funcionalidades da Plataforma
         </h2>
@@ -213,7 +213,7 @@ const Home = () => {
         </div>
       </div>
     </section>
-    <section className="bg-white rounded-lg px-8 py-16 ">
+    <section className="bg-white rounded-lg px-8 py-16" id="beneficios">
 
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-start">
 
