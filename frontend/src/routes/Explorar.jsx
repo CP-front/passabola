@@ -29,7 +29,7 @@ const Explorar = () => {
           <form className="grid md:grid-cols-2 gap-6">
             {/* Cidade */}
             <div className="flex flex-col">
-              <label className="text-sm font-medium text-gray-700 mb-1">
+              <label className="text-sm font-medium text-purple-700 mb-1">
                 Cidade
               </label>
               <input
@@ -41,7 +41,7 @@ const Explorar = () => {
 
             {/* Data */}
             <div className="flex flex-col">
-              <label className="text-sm font-medium text-gray-700 mb-1">
+              <label className="text-sm font-medium text-purple-700 mb-1">
                 Data
               </label>
               <input
@@ -55,7 +55,7 @@ const Explorar = () => {
           <div className="flex justify-center mt-8">
             <button onClick={() => navigate("/explorar/encontros")}
               type="submit"
-              className="w-full md:w-auto bg-gradient-to-r from-purple-600 to-pink-500 text-white px-40 py-3 rounded-lg font-medium shadow hover:opacity-90 transition"
+              className="w-full md:w-auto bg-gradient-to-r from-purple-600 to-pink-500 text-white px-40 py-3 rounded-lg font-medium shadow hover:opacity-90 transition cursor-pointer"
             >
               🔍 Buscar Encontros
             </button>

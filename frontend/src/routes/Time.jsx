@@ -37,7 +37,7 @@ export default function Time() {
           </p>
           <button
             onClick={() => navigate("/explorar/encontros/time/posicao")}
-            className="mt-6 w-full py-3 bg-purple-500 text-white font-semibold rounded-lg hover:bg-purple-600 transition"
+            className="mt-6 w-full py-3 bg-purple-500 text-white font-semibold rounded-lg hover:bg-purple-600 transition cursor-pointer"
           >
             Escolher Time Passa
           </button>
@@ -54,7 +54,7 @@ export default function Time() {
           </p>
           <button
             onClick={() => navigate("/explorar/encontros/time/posicao")}
-            className="mt-6 w-full py-3 bg-pink-500 text-white font-semibold rounded-lg hover:bg-pink-600 transition"
+            className="mt-6 w-full py-3 bg-pink-500 text-white font-semibold rounded-lg hover:bg-pink-600 transition cursor-pointer"
           >
             Escolher Time Bola
           </button>

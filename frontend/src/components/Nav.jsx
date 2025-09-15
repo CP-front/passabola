@@ -9,11 +9,12 @@ const Nav = () => {
   return (
     <nav className="flex items-center justify-between px-6 py-3 bg-white shadow-sm">
       {/* Logo + título */}
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center space-x-2 cursor-pointer">
         <img
           src={passaBola}
           alt="Passa a Bola"
           className="w-50"
+          onClick={() => navigate("/")}
         />
       </div>
 
