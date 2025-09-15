@@ -1,90 +1,53 @@
 function Encontros() {
   return (
-    <div style={{ background: "#f5f5f5", minHeight: "100vh", padding: "40px" }}>
-      
-      {/* Container do título e botão */}
-      <div style={{ display: "flex", alignItems: "center", marginBottom: "30px" }}>
-        <button style={{
-          border: "1px solid #7b2ff7",
-          background: "transparent",
-          color: "#7b2ff7",
-          padding: "8px 16px",
-          borderRadius: "6px",
-          cursor: "pointer",
-          marginRight: "15px"
-        }}>
+    <main className="px-8 py-12 max-w-5xl mx-auto">
+      {/* Cabeçalho */}
+      <div className="flex items-center gap-2 mb-8 font-bold">
+        <button className="flex items-center gap-2 px-4 py-2 border-2 cursor-pointer rounded-md text-sm text-purple-600 border-purple-600 hover:bg-purple-100">
           ← Voltar
         </button>
-        <h2 style={{ color: "#7b2ff7", fontWeight: "bold", fontSize: "22px", margin: 0 }}>
-          Encontros Disponíveis
-        </h2>
+        <h1 className="text-2xl text-purple-700">Encontros Disponíveis</h1>
       </div>
 
       {/* Cards */}
-      <div style={{ display: "flex", gap: "20px" }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Card 1 */}
-        <div style={{
-          background: "white",
-          borderRadius: "10px",
-          boxShadow: "0px 2px 6px rgba(0,0,0,0.1)",
-          padding: "20px",
-          width: "300px"
-        }}>
-          <h3 style={{ color: "#7b2ff7", marginBottom: "10px" }}>📍 Playball Pompeia</h3>
-          <p>📅 09/06/2025</p>
-          <p style={{
-            background: "#eee",
-            display: "inline-block",
-            padding: "4px 10px",
-            borderRadius: "10px",
-            fontSize: "12px",
-            marginBottom: "15px"
-          }}>8 vagas restantes</p>
-          <button style={{
-            background: "linear-gradient(to right, #7b2ff7, #f107a3)",
-            color: "white",
-            border: "none",
-            padding: "10px",
-            borderRadius: "6px",
-            cursor: "pointer",
-            width: "100%"
-          }}>
+        <div className="bg-white rounded-xl shadow p-6">
+          <h2 className="text-lg font-semibold text-purple-700 mb-2">Playball Pompeia</h2>
+          <div className="flex items-center gap-2 text-gray-600 text-sm mb-2">
+            <span>📅</span>
+            <span>09/06/2025</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-purple-600 mb-4">
+            <span>👥</span>
+            <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs">
+              14 vagas restantes
+            </span>
+          </div>
+          <button className="w-full py-2 cursor-pointer font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 rounded-lg hover:opacity-90">
             Inscreva-se
           </button>
         </div>
 
         {/* Card 2 */}
-        <div style={{
-          background: "white",
-          borderRadius: "10px",
-          boxShadow: "0px 2px 6px rgba(0,0,0,0.1)",
-          padding: "20px",
-          width: "300px"
-        }}>
-          <h3 style={{ color: "#7b2ff7", marginBottom: "10px" }}>📍 Playball Pompeia</h3>
-          <p>📅 12/06/2025</p>
-          <p style={{
-            background: "#eee",
-            display: "inline-block",
-            padding: "4px 10px",
-            borderRadius: "10px",
-            fontSize: "12px",
-            marginBottom: "15px"
-          }}>12 vagas restantes</p>
-          <button style={{
-            background: "linear-gradient(to right, #7b2ff7, #f107a3)",
-            color: "white",
-            border: "none",
-            padding: "10px",
-            borderRadius: "6px",
-            cursor: "pointer",
-            width: "100%"
-          }}>
+        <div className="bg-white rounded-xl shadow p-6">
+          <h2 className="text-lg font-semibold text-purple-700 mb-2">Playball Pompeia</h2>
+          <div className="flex items-center gap-2 text-gray-600 text-sm mb-2">
+            <span>📅</span>
+            <span>12/06/2025</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-purple-600 mb-4">
+            <span>👥</span>
+            <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs">
+              14 vagas restantes
+            </span>
+          </div>
+          <button className="w-full py-2 cursor-pointer font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 rounded-lg hover:opacity-90">
             Inscreva-se
           </button>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

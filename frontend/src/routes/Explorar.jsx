@@ -7,7 +7,7 @@ const Explorar = () => {
         <h1 className="text-3xl md:text-4xl font-bold text-purple-800 mb-3 text-center">
           Explorar os Jogos
         </h1>
-        <p className="text-gray-600 text-center mb-10">
+        <p className="text-purple-600 text-center mb-10 text-lg">
           Encontre encontros de futebol feminino na sua cidade
         </p>
 
@@ -46,7 +46,7 @@ const Explorar = () => {
           <div className="flex justify-center mt-8">
             <button
               type="submit"
-              className="w-full md:w-auto bg-gradient-to-r from-purple-600 to-pink-500 text-white px-8 py-3 rounded-lg font-medium shadow hover:opacity-90 transition"
+              className="w-full md:w-auto bg-gradient-to-r from-purple-600 to-pink-500 text-white px-40 py-3 rounded-lg font-medium shadow hover:opacity-90 transition"
             >
               🔍 Buscar Encontros
             </button>

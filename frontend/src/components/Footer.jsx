@@ -68,7 +68,7 @@ const Footer = () => {
 
             <div>
           <h4 className="font-semibold mb-3">Contato</h4>
-          <button className="flex items-center space-x-2 px-4 py-2 bg-white text-purple-700 rounded-md font-medium hover:bg-gray-100 transition">
+          <button className="flex items-center space-x-2 px-10 py-2 bg-white text-purple-700 rounded-md font-medium hover:bg-gray-100 transition">
             <svg xmlns="http://www.w3.org/2000/svg" 
               fill="none" viewBox="0 0 24 24" strokeWidth={2} 
               stroke="currentColor" className="w-5 h-5">
