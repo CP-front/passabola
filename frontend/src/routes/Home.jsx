@@ -44,7 +44,7 @@ const Home = () => {
         </div>
 
         {/* Métricas */}
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8 mb-16">
           <div>
             <h3 className="text-2xl font-bold text-[#4C1D8F]">14</h3>
             <p className="text-sm text-purple-600">Jogadoras por encontro</p>
@@ -60,17 +60,18 @@ const Home = () => {
         </div>
       </div>
       
-      <div className="mt-16" id="funcionalidades">
+      <section className="bg-gray-50 px-6 py-16 rounded-md" id="funcionalidades">
+      <div>
         <h2 className="text-3xl font-bold text-[#4C1D8F]">
           Funcionalidades da Plataforma
         </h2>
-        <p className="text-lg mt-2 text-purple-600">
+        <p className="text-lg mt-2 mb-8 text-purple-600">
           Tecnologia e organização trabalhando juntas para criar a melhor
           experiência de futebol feminino do Brasil
         </p>
       </div>
       
-      <section className="bg-gray-50 px-6 py-16 rounded-md">
+      
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         
         {/* Card 1 */}
@@ -149,10 +150,10 @@ const Home = () => {
         {/* Card 1 */}
         <div className="bg-white rounded-lg shadow-sm p-6 transition transform hover:scale-105 hover:shadow-lg">
           <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold">
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold">
               1
             </div>
-            <span className="text-purple-600 text-2xl"><RiUserAddLine/></span>
+            <span className="flex items-center justify-center w-12 h-12 rounded-full bg-[#EEEBFF] text-purple-600 text-2xl"><RiUserAddLine/></span>
           </div>
           <div className="flex text-lg">
           <p className="mt-4 text-[#4C1D8F] font-semibold ">Cadastro</p>
@@ -168,10 +169,10 @@ const Home = () => {
         {/* Card 2 */}
         <div className="bg-white rounded-lg shadow-sm p-6 transition transform hover:scale-105 hover:shadow-lg">
           <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold">
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold">
               2
             </div>
-            <span className="text-purple-600 text-2xl"><LuMapPinned/></span>
+            <span className="flex items-center justify-center w-12 h-12 rounded-full bg-[#EEEBFF] text-purple-600 text-2xl"><LuMapPinned/></span>
           </div>
           <div className="flex text-lg">
           <p className="mt-4 text-[#4C1D8F] font-semibold">Escolha sua Posição</p>
@@ -187,10 +188,10 @@ const Home = () => {
         {/* Card 3 */}
         <div className="bg-white rounded-lg shadow-sm p-6 transition transform hover:scale-105 hover:shadow-lg">
           <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold">
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold">
               3
             </div>
-            <span className="text-purple-600 text-2xl"><GrGroup/></span>
+            <span className="flex items-center justify-center w-12 h-12 rounded-full bg-[#EEEBFF] text-purple-600 text-2xl"><GrGroup/></span>
           </div>
           <div className="flex text-lg">
           <p className="mt-4 text-[#4C1D8F] font-semibold">Formação dos Times</p>
@@ -203,13 +204,12 @@ const Home = () => {
           </ul>
         </div>
 
-
         <div className="bg-white rounded-lg shadow-sm p-6 transition transform hover:scale-105 hover:shadow-lg">
           <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold">
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold">
               4
             </div>
-            <span className="text-purple-600 text-2xl"><CiCalendar/></span>
+            <span className="flex items-center justify-center w-12 h-12 rounded-full bg-[#EEEBFF] text-purple-600 text-2xl"><CiCalendar/></span>
           </div>
           <div className="flex text-lg">
           <p className="mt-4 text-[#4C1D8F] font-semibold">Encontro Semanal</p>

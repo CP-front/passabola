@@ -36,7 +36,7 @@ const Explorar = () => {
           <form className="grid md:grid-cols-2 gap-6">
             {/* Cidade */}
             <div className="flex flex-col">
-              <label className="flex items-center gap-2 text-sm font-medium text-purple-700 mb-1">
+              <label className="flex items-center gap-2 text-base font-medium text-purple-700 mb-1">
                 <LuMapPinned/>Cidade
               </label>
               <input
@@ -48,7 +48,7 @@ const Explorar = () => {
 
             {/* Data */}
             <div className="flex flex-col">
-              <label className="flex items-center gap-2 text-sm font-medium text-purple-700 mb-1">
+              <label className="flex items-center gap-2 text-base font-medium text-purple-700 mb-1">
                <CiCalendar/> Data
               </label>
               <input
