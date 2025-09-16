@@ -234,7 +234,7 @@ const Home = () => {
           <h2 className="text-3xl font-bold text-purple-800 mb-4">
             Transformando o Futebol <br /> Feminino no Brasil
           </h2>
-          <p className="text-gray-600 mb-8">
+          <p className="text-purple-600 mb-8">
             A plataforma é um primeiro passo para algo maior. Com ela, o Passa a Bola 
             fortaleceu seu papel como agente transformador do futebol feminino no Brasil.
           </p>
@@ -286,9 +286,6 @@ const Home = () => {
             </li>
           </ul>
 
-          <button onClick={() => navigate("/explorar")} className="mt-8 px-6 py-3 rounded-lg text-white font-medium bg-gradient-to-r from-pink-500 to-purple-500 shadow hover:opacity-90 transition transform hover:scale-105 hover:shadow-lg cursor-pointer">
-            Fazer parte da transformação
-          </button>
         </div>
         <div className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-8 rounded-2xl shadow-lg">
           <h3 className="text-xl font-semibold mb-3">
@@ -311,6 +308,10 @@ const Home = () => {
             </div>
           </div>
         </div>
+
+        <button onClick={() => navigate("/explorar")} className="mt-8 px-6 py-3 rounded-lg text-white font-medium bg-gradient-to-r from-pink-500 to-purple-500 shadow hover:opacity-90 transition transform hover:scale-105 hover:shadow-lg cursor-pointer">
+            Fazer parte da transformação
+          </button>
       </div>
     </section>
 
