@@ -1,5 +1,4 @@
 import express from "express";
-import bodyParser from "body-parser";
 import cors from "cors";
 
 const app = express();
@@ -7,8 +6,10 @@ const PORT = 5000;
 
 // middlewares
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+const usuarios = []; // lista em memória
 
 // rota de cadastro
 app.post("/cadastro", (req, res) => {
@@ -22,9 +23,10 @@ app.post("/cadastro", (req, res) => {
     return res.status(400).json({ error: "As senhas não conferem" });
   }
 
-  // aqui você poderia salvar no banco de dados
-  console.log("Novo usuário cadastrado:", { nome, cpf, email, telefone });
+  console.log("Novo usuário cadastrado:", { nome, cpf, email, telefone, senha });
 
+  // salvar usuário em memória
+  usuarios.push({ nome, cpf, email, telefone, senha });
   return res.status(200).json({ message: "Usuário cadastrado com sucesso!" });
 });
 
@@ -36,8 +38,9 @@ app.post("/login", (req, res) => {
     return res.status(400).json({ error: "Preencha todos os campos" });
   }
 
-  // validação fake
-  if (email === "teste@email.com" && senha === "123456") {
+  const usuario = usuarios.find((u) => u.email === email && u.senha === senha);
+
+  if (usuario) {
     return res.status(200).json({ message: "Login realizado com sucesso!" });
   }
 

@@ -1,7 +1,37 @@
 import { useState } from "react";
 
 export default function AuthModal({ isOpen, onClose, type, setModalType }) {
+  const [formData, setFormData] = useState({});
+  const [message, setMessage] = useState("");
+
   if (!isOpen) return null;
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e, endpoint) => {
+    e.preventDefault();
+    setMessage("");
+
+    try {
+      const response = await fetch(`http://localhost:5000/${endpoint}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage(data.message);
+      } else {
+        setMessage(data.error);
+      }
+    } catch (error) {
+      setMessage("Erro ao conectar com o servidor");
+    }
+  };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
@@ -24,16 +54,21 @@ export default function AuthModal({ isOpen, onClose, type, setModalType }) {
         {type === "login" ? (
           <>
             <h2 className="text-xl font-bold text-purple-600 mb-4">Login</h2>
-            <form method="POST" action="http://localhost:5000/login" className="flex flex-col gap-3">
-              <input type="email" name="email" placeholder="E-mail" className="border p-2 rounded border-purple-500" required />
-              <input type="password" name="senha" placeholder="Senha" className="border p-2 rounded border-purple-500" required />
+            <form onSubmit={(e) => handleSubmit(e, "login")} className="flex flex-col gap-3">
+              <input type="email" name="email" placeholder="E-mail"
+                className="border p-2 rounded border-purple-500"
+                required onChange={handleChange} />
+              <input type="password" name="senha" placeholder="Senha"
+                className="border p-2 rounded border-purple-500"
+                required onChange={handleChange} />
               <button className="bg-purple-600 text-white py-2 rounded hover:bg-purple-800 cursor-pointer">
                 Entrar
               </button>
             </form>
+            {message && <p className="text-sm mt-2 text-red-500">{message}</p>}
             <p className="text-sm mt-3">
               Não tem conta?{" "}
-              <span 
+              <span
                 onClick={() => setModalType("register")}
                 className="text-pink-600 cursor-pointer"
               >
@@ -44,14 +79,26 @@ export default function AuthModal({ isOpen, onClose, type, setModalType }) {
         ) : (
           <>
             <h2 className="text-xl font-bold text-pink-600 mb-4">Cadastro de Usuário</h2>
-            <form method="POST" action="http://localhost:5000/cadastro" className="flex flex-col gap-3">
-              <input type="text" name="nome" placeholder="Nome Completo" className="border p-2 rounded border-pink-500" required />
-              <input type="text" name="cpf" placeholder="CPF" className="border p-2 rounded border-pink-500" required />
-              <input type="email" name="email" placeholder="E-mail" className="border p-2 rounded border-pink-500" required />
-              <input type="tel" name="telefone" placeholder="Telefone" className="border p-2 rounded border-pink-500" required />
-              <input type="password" name="senha" placeholder="Senha" className="border p-2 rounded border-pink-500" required />
-              <input type="password" name="confirmarSenha" placeholder="Confirmar senha" className="border p-2 rounded border-pink-500" required />
-              
+            <form onSubmit={(e) => handleSubmit(e, "cadastro")} className="flex flex-col gap-3">
+              <input type="text" name="nome" placeholder="Nome Completo"
+                className="border p-2 rounded border-pink-500"
+                required onChange={handleChange} />
+              <input type="text" name="cpf" placeholder="CPF"
+                className="border p-2 rounded border-pink-500"
+                required onChange={handleChange} />
+              <input type="email" name="email" placeholder="E-mail"
+                className="border p-2 rounded border-pink-500"
+                required onChange={handleChange} />
+              <input type="tel" name="telefone" placeholder="Telefone"
+                className="border p-2 rounded border-pink-500"
+                required onChange={handleChange} />
+              <input type="password" name="senha" placeholder="Senha"
+                className="border p-2 rounded border-pink-500"
+                required onChange={handleChange} />
+              <input type="password" name="confirmarSenha" placeholder="Confirmar senha"
+                className="border p-2 rounded border-pink-500"
+                required onChange={handleChange} />
+
               <label className="flex items-center gap-2 text-sm">
                 <input type="checkbox" required /> Aceito os termos de uso
               </label>
@@ -60,9 +107,10 @@ export default function AuthModal({ isOpen, onClose, type, setModalType }) {
                 Cadastrar
               </button>
             </form>
+            {message && <p className="text-sm mt-2 text-red-500">{message}</p>}
             <p className="text-sm mt-3">
               Já tem conta?{" "}
-              <span 
+              <span
                 onClick={() => setModalType("login")}
                 className="text-purple-600 cursor-pointer"
               >
