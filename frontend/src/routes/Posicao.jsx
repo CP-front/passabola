@@ -84,7 +84,7 @@ export default function Posicao() {
                 style={{ left: pos.x, top: pos.y }}
               >
                 <div className="w-10 h-10 rounded-full flex items-center justify-center bg-purple-600 text-white">
-                  {pos.filled ? <Check className="w-5 h-5"/> : <Plus className="w-5 h-5" />}
+                  {pos.filled ? <Check className="w-5 h-5"/> : <Plus className="w-5 h-5 cursor-pointer" />}
                 </div>
               </div>
             ))}
@@ -99,7 +99,7 @@ export default function Posicao() {
                 key={reserva.id}
                 className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white"
               >
-                {reserva.filled ? <Check className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+                {reserva.filled ? <Check className="w-5 h-5" /> : <Plus className="w-5 h-5 cursor-pointer" />}
               </div>
             ))}
           </div>
@@ -114,17 +114,17 @@ export default function Posicao() {
             {positions.map((position) => (
               <div
                 key={position.id}
-                className={`p-3 rounded-lg ${position.available ? "bg-purple-100" : "bg-gray-100"}`}
+                className={`p-3 rounded-lg ${position.available ? "bg-purple-100 cursor-pointer" : "bg-gray-100 cursor-default"}`}
               >
                 <div className="font-bold text-purple-600 text-sm">{position.name}</div>
-                <div className={`text-sm ${position.available ? "text-purple-500" : "text-purple-700"}`}>
+                <div className={`text-sm ${position.available ? "text-purple-500 cursor-pointer" : "text-purple-700 cursor-default"}`}>
                   {position.player}
                 </div>
               </div>
             ))}
           </div>
 
-          <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 rounded-lg">
+          <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 rounded-lg cursor-pointer">
             Confirmar Inscrição
           </button>
         </div>

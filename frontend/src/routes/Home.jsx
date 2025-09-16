@@ -241,7 +241,7 @@ const Home = () => {
 
           <ul className="space-y-6">
             <li className="flex items-start gap-3">
-              <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-2 rounded-full">
+              <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-white text-lg p-4 rounded-full">
                 <AiOutlineThunderbolt/>
               </span>
               <div>
@@ -252,7 +252,7 @@ const Home = () => {
               </div>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-2 rounded-full">
+              <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-white text-lg p-4 rounded-full">
                 <FiShield/>
               </span>
               <div>
@@ -263,7 +263,7 @@ const Home = () => {
               </div>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-2 rounded-full">
+              <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-white text-lg p-4 rounded-full">
                 <CiHeart/>
               </span>
               <div>
@@ -274,7 +274,7 @@ const Home = () => {
               </div>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-2 rounded-full">
+              <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-white text-lg p-4 rounded-full">
                 <HiOutlineSparkles/>
               </span>
               <div>
