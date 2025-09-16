@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react"
 function Encontros() {
   const navigate = useNavigate();
   return (
-    <main className="px-8 py-12 max-w-5xl mx-auto">
+    <main className="px-8 py-12 bg-gray-100 max-w-5xl mx-auto">
       {/* Cabeçalho */}
       <div className="flex items-center gap-2 mb-8 font-bold">
         <button 

@@ -6,7 +6,7 @@ export default function Time() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-gray-50 min-h-screen flex flex-col items-center py-12">
+    <div className="bg-gray-100 min-h-screen flex flex-col items-center py-12">
       {/* Botão voltar */}
       <div className="w-full max-w-5xl px-4 mb-6">
         <button

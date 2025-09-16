@@ -3,7 +3,7 @@ const Home = () => {
   const navigate = useNavigate();
   
   return (
-    <section className="bg-gray-50 text-center px-6 py-16">
+    <section className="bg-gray-100 text-center px-6 py-16">
       <div className="max-w-3xl mx-auto">
         <span className="inline-flex items-center px-4 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-sm">
           <span className="mr-2">🏆</span> Revolucionando o Futebol Feminino
