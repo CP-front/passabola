@@ -1,4 +1,14 @@
 import { useNavigate } from "react-router-dom";
+import { CiCalendar } from "react-icons/ci";
+import { IoIosPeople } from "react-icons/io";
+import { RiUserAddLine } from "react-icons/ri";
+import { LuMapPinned } from "react-icons/lu";
+import { GrGroup } from "react-icons/gr";
+import { AiOutlineThunderbolt } from "react-icons/ai";
+import { FiShield } from "react-icons/fi";
+import { CiHeart } from "react-icons/ci";
+import { HiOutlineSparkles } from "react-icons/hi2";
+
 const Home = () => {
   const navigate = useNavigate();
   
@@ -24,11 +34,11 @@ const Home = () => {
 
         {/* Botões */}
         <div className="mt-8 flex justify-center space-x-4">
-          <button onClick={() => navigate("/explorar")} className="px-6 py-3 rounded-md font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 shadow hover:opacity-90 transition transform hover:scale-105 hover:shadow-lg cursor-pointer">
-            📅 Participar dos encontros
+          <button onClick={() => navigate("/explorar")} className="flex items-center gap-2 px-6 py-3 rounded-md font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 shadow hover:opacity-90 transition transform hover:scale-105 hover:shadow-lg cursor-pointer">
+              <CiCalendar className="" size={24} />Participar dos encontros
           </button>
           <button className="px-6 py-3 rounded-md font-medium border border-purple-600 text-purple-700 hover:bg-purple-50 transition transform hover:scale-105 hover:shadow-lg flex items-center space-x-2 cursor-pointer">
-            <span>⚙</span>
+            <span><IoIosPeople size={24}/></span>
             <span>Saiba Mais</span>
           </button>
         </div>
@@ -142,7 +152,7 @@ const Home = () => {
             <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold">
               1
             </div>
-            <span className="text-purple-600 text-2xl">⚙️</span>
+            <span className="text-purple-600 text-2xl"><RiUserAddLine/></span>
           </div>
           <div className="flex text-lg">
           <p className="mt-4 text-[#4C1D8F] font-semibold ">Cadastro</p>
@@ -161,7 +171,7 @@ const Home = () => {
             <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold">
               2
             </div>
-            <span className="text-purple-600 text-2xl">📍</span>
+            <span className="text-purple-600 text-2xl"><LuMapPinned/></span>
           </div>
           <div className="flex text-lg">
           <p className="mt-4 text-[#4C1D8F] font-semibold">Escolha sua Posição</p>
@@ -180,7 +190,7 @@ const Home = () => {
             <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold">
               3
             </div>
-            <span className="text-purple-600 text-2xl">👥</span>
+            <span className="text-purple-600 text-2xl"><GrGroup/></span>
           </div>
           <div className="flex text-lg">
           <p className="mt-4 text-[#4C1D8F] font-semibold">Formação dos Times</p>
@@ -199,7 +209,7 @@ const Home = () => {
             <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold">
               4
             </div>
-            <span className="text-purple-600 text-2xl">📅</span>
+            <span className="text-purple-600 text-2xl"><CiCalendar/></span>
           </div>
           <div className="flex text-lg">
           <p className="mt-4 text-[#4C1D8F] font-semibold">Encontro Semanal</p>
@@ -232,7 +242,7 @@ const Home = () => {
           <ul className="space-y-6">
             <li className="flex items-start gap-3">
               <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-2 rounded-full">
-                ⚡
+                <AiOutlineThunderbolt/>
               </span>
               <div>
                 <h3 className="font-semibold text-purple-800">Automatização total</h3>
@@ -243,7 +253,7 @@ const Home = () => {
             </li>
             <li className="flex items-start gap-3">
               <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-2 rounded-full">
-                🛡️
+                <FiShield/>
               </span>
               <div>
                 <h3 className="font-semibold text-purple-800">Transparência</h3>
@@ -254,7 +264,7 @@ const Home = () => {
             </li>
             <li className="flex items-start gap-3">
               <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-2 rounded-full">
-                ❤️
+                <CiHeart/>
               </span>
               <div>
                 <h3 className="font-semibold text-purple-800">Responsabilidade</h3>
@@ -265,7 +275,7 @@ const Home = () => {
             </li>
             <li className="flex items-start gap-3">
               <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-2 rounded-full">
-                ✨
+                <HiOutlineSparkles/>
               </span>
               <div>
                 <h3 className="font-semibold text-purple-800">Inclusão Digital</h3>
