@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react"
+import { FaMagnifyingGlass } from "react-icons/fa6";
+import { LuMapPinned } from "react-icons/lu";
+import { CiCalendar } from "react-icons/ci";
 
 const Explorar = () => {
   const navigate = useNavigate();
@@ -33,8 +36,8 @@ const Explorar = () => {
           <form className="grid md:grid-cols-2 gap-6">
             {/* Cidade */}
             <div className="flex flex-col">
-              <label className="text-sm font-medium text-purple-700 mb-1">
-                Cidade
+              <label className="flex items-center gap-2 text-sm font-medium text-purple-700 mb-1">
+                <LuMapPinned/>Cidade
               </label>
               <input
                 type="text"
@@ -45,8 +48,8 @@ const Explorar = () => {
 
             {/* Data */}
             <div className="flex flex-col">
-              <label className="text-sm font-medium text-purple-700 mb-1">
-                Data
+              <label className="flex items-center gap-2 text-sm font-medium text-purple-700 mb-1">
+               <CiCalendar/> Data
               </label>
               <input
                 type="date"
@@ -59,9 +62,9 @@ const Explorar = () => {
           <div className="flex justify-center mt-8">
             <button onClick={() => navigate("/explorar/encontros")}
               type="submit"
-              className="w-full md:w-auto bg-gradient-to-r from-purple-600 to-pink-500 text-white px-40 py-3 rounded-lg font-medium shadow hover:opacity-90 transition cursor-pointer transform hover:scale-105 hover:shadow-lg"
+              className=" flex items-center gap-2 justifyw-full md:w-auto bg-gradient-to-r from-purple-600 to-pink-500 text-white px-40 py-3 rounded-lg font-medium shadow hover:opacity-90 transition cursor-pointer transform hover:scale-105 hover:shadow-lg"
             >
-              🔍 Buscar Encontros
+              <FaMagnifyingGlass/> Buscar Encontros
             </button>
           </div>
         </div>
