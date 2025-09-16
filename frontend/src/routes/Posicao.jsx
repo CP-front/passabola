@@ -13,9 +13,9 @@ export default function Posicao() {
     { id: "defensora2", name: "Defensora", player: "Disponível", available: true },
     { id: "meia1", name: "Ala", player: "Disponível", available: true },
     { id: "meia2", name: "Meia", player: "Disponível", available: true },
-    { id: "meia3", name: "Ala", player: "Disponível", available: false },
-    { id: "atacante", name: "Atacante", player: "Disponível", available: false },
-    { id: "reserva1", name: "Reserva", player: "Disponível", available: false },
+    { id: "meia3", name: "Ala", player: "Disponível", available: true },
+    { id: "atacante", name: "Atacante", player: "Disponível", available: true },
+    { id: "reserva1", name: "Reserva", player: "Disponível", available: true },
     { id: "reserva2", name: "Reserva", player: "Disponível", available: true },
   ]
 
@@ -25,12 +25,12 @@ export default function Posicao() {
     { id: "defensora2", x: "75%", y: "70%", filled: false },
     { id: "meia1", x: "20%", y: "50%", filled: false },
     { id: "meia2", x: "50%", y: "50%", filled: false },
-    { id: "meia3", x: "80%", y: "50%", filled: true },
-    { id: "atacante", x: "50%", y: "25%", filled: true },
+    { id: "meia3", x: "80%", y: "50%", filled: false },
+    { id: "atacante", x: "50%", y: "25%", filled: false },
   ]
 
   const reserveBench = [
-  { id: "reserva1", filled: true },
+  { id: "reserva1", filled: false },
   { id: "reserva2", filled: false }, 
 ]
   
