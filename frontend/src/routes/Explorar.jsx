@@ -11,7 +11,7 @@ const Explorar = () => {
         {/* Título */}
        <div className="w-full max-w-5xl px-4 mb-6">
         <button
-          onClick={() => navigate("/explorar/encontros")}
+          onClick={() => navigate("/")}
           className="flex items-center gap-2 px-4 py-2 border-2 cursor-pointer rounded-md text-sm text-purple-600 border-purple-600 hover:bg-purple-100 font-bold">
           <ArrowLeft className="w-4 h-4" />
            Voltar
