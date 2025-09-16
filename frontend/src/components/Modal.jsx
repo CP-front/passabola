@@ -16,7 +16,7 @@ export default function AuthModal({ isOpen, onClose, type }) {
         {/* Botão fechar */}
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-gray-600 hover:text-black"
+          className="absolute top-2 right-2 text-gray-600 hover:text-black cursor-pointer"
         >
           ✕
         </button>
@@ -25,39 +25,43 @@ export default function AuthModal({ isOpen, onClose, type }) {
           <>
             <h2 className="text-xl font-bold text-purple-600 mb-4">Login</h2>
             <form method="POST" action="http://localhost:5000/login" className="flex flex-col gap-3">
-              <input type="email" name="email" placeholder="E-mail" className="border p-2 rounded" required />
-              <input type="password" name="senha" placeholder="Senha" className="border p-2 rounded" required />
-              <button className="bg-purple-600 text-white py-2 rounded hover:opacity-90">
+              <input type="email" name="email" placeholder="E-mail" className="border p-2 rounded border-purple-500" required />
+              <input type="password" name="senha" placeholder="Senha" className="border p-2 rounded border-purple-500" required />
+              <button className="bg-purple-600 text-white py-2 rounded hover:bg-purple-800 cursor-pointer">
                 Entrar
               </button>
             </form>
             <p className="text-sm mt-3">
               Não tem conta?{" "}
-              <span className="text-purple-600 cursor-pointer">Cadastre-se</span>
+              <span 
+              onClick={() => { setModalType("register"); setAuthModalOpen(true); }}
+              className="text-purple-600 cursor-pointer">Cadastre-se</span>
             </p>
           </>
         ) : (
           <>
-            <h2 className="text-xl font-bold text-purple-600 mb-4">Cadastro de Usuário</h2>
+            <h2 className="text-xl font-bold text-pink-600 mb-4">Cadastro de Usuário</h2>
             <form method="POST" action="http://localhost:5000/cadastro" className="flex flex-col gap-3">
-              <input type="text" name="nome" placeholder="Nome Completo" className="border p-2 rounded" required />
-              <input type="text" name="cpf" placeholder="CPF" className="border p-2 rounded" required />
-              <input type="email" name="email" placeholder="E-mail" className="border p-2 rounded" required />
-              <input type="tel" name="telefone" placeholder="Telefone" className="border p-2 rounded" required />
-              <input type="password" name="senha" placeholder="Senha" className="border p-2 rounded" required />
-              <input type="password" name="confirmarSenha" placeholder="Confirmar senha" className="border p-2 rounded" required />
+              <input type="text" name="nome" placeholder="Nome Completo" className="border p-2 rounded border-pink-500" required />
+              <input type="text" name="cpf" placeholder="CPF" className="border p-2 rounded border-pink-500" required />
+              <input type="email" name="email" placeholder="E-mail" className="border p-2 rounded border-pink-500" required />
+              <input type="tel" name="telefone" placeholder="Telefone" className="border p-2 rounded border-pink-500" required />
+              <input type="password" name="senha" placeholder="Senha" className="border p-2 rounded border-pink-500" required />
+              <input type="password" name="confirmarSenha" placeholder="Confirmar senha" className="border p-2 rounded border-pink-500" required />
               
               <label className="flex items-center gap-2 text-sm">
                 <input type="checkbox" required /> Aceito os termos de uso
               </label>
 
-              <button className="bg-pink-500 text-white py-2 rounded hover:opacity-90">
+              <button className="bg-pink-500 text-white py-2 rounded hover:bg-pink-400 cursor-pointer">
                 Cadastrar
               </button>
             </form>
             <p className="text-sm mt-3">
               Já tem conta?{" "}
-              <span className="text-purple-600 cursor-pointer">Fazer Login</span>
+              <button 
+              onClick={() => { setModalType("login"); setAuthModalOpen(true); }}
+              className="text-purple-600 cursor-pointer">Fazer Login</button>
             </p>
           </>
         )}
