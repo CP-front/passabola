@@ -13,9 +13,9 @@ export default function Posicao() {
     { id: "defensora2", name: "Defensora", player: "Disponível", available: true },
     { id: "meia1", name: "Ala", player: "Disponível", available: true },
     { id: "meia2", name: "Meia", player: "Disponível", available: true },
-    { id: "meia3", name: "Ala", player: "Disponível", available: true },
-    { id: "atacante", name: "Atacante", player: "Disponível", available: true },
-    { id: "reserva1", name: "Reserva", player: "Disponível", available: true },
+    { id: "meia3", name: "Ala", player: "Disponível", available: false },
+    { id: "atacante", name: "Atacante", player: "Disponível", available: false },
+    { id: "reserva1", name: "Reserva", player: "Disponível", available: false },
     { id: "reserva2", name: "Reserva", player: "Disponível", available: true },
   ]
 
@@ -23,11 +23,16 @@ export default function Posicao() {
     { id: "goleiro", x: "50%", y: "90%", filled: false },
     { id: "defensora1", x: "25%", y: "70%", filled: false },
     { id: "defensora2", x: "75%", y: "70%", filled: false },
-    { id: "meia1", x: "20%", y: "50%", filled: true },
+    { id: "meia1", x: "20%", y: "50%", filled: false },
     { id: "meia2", x: "50%", y: "50%", filled: false },
-    { id: "meia3", x: "80%", y: "50%", filled: false },
-    { id: "atacante", x: "50%", y: "25%", filled: false },
+    { id: "meia3", x: "80%", y: "50%", filled: true },
+    { id: "atacante", x: "50%", y: "25%", filled: true },
   ]
+
+  const reserveBench = [
+  { id: "reserva1", filled: true },
+  { id: "reserva2", filled: false }, 
+]
   
   return (
     <div className="min-h-screen bg-gray-100 p-4">
@@ -79,7 +84,7 @@ export default function Posicao() {
                 style={{ left: pos.x, top: pos.y }}
               >
                 <div className="w-10 h-10 rounded-full flex items-center justify-center bg-purple-600 text-white">
-                  {pos.filled && <Check className="w-5 h-5" />}
+                  {pos.filled ? <Check className="w-5 h-5"/> : <Plus className="w-5 h-5" />}
                 </div>
               </div>
             ))}
@@ -87,16 +92,18 @@ export default function Posicao() {
 
           {/* Reserve Bench */}
           <div className="mt-6">
-            <h3 className="text-lg font-semibold text-purple-600 mb-3">Banco de Reservas</h3>
-            <div className="flex gap-3">
-              <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white">
-                <Plus className="w-5 h-5" />
+          <h3 className="text-lg font-semibold text-purple-600 mb-3">Banco de Reservas</h3>
+          <div className="flex gap-3">
+            {reserveBench.map((reserva) => (
+              <div
+                key={reserva.id}
+                className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white"
+              >
+                {reserva.filled ? <Check className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
               </div>
-              <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white">
-                <Plus className="w-5 h-5" />
-              </div>
-            </div>
+            ))}
           </div>
+        </div>
         </div>
 
         {/* Team Lineup Section */}
@@ -109,8 +116,8 @@ export default function Posicao() {
                 key={position.id}
                 className={`p-3 rounded-lg ${position.available ? "bg-purple-100" : "bg-gray-100"}`}
               >
-                <div className="font-medium text-purple-600 text-sm">{position.name}</div>
-                <div className={`text-sm ${position.available ? "text-purple-500" : "text-gray-700"}`}>
+                <div className="font-bold text-purple-600 text-sm">{position.name}</div>
+                <div className={`text-sm ${position.available ? "text-purple-500" : "text-purple-700"}`}>
                   {position.player}
                 </div>
               </div>
