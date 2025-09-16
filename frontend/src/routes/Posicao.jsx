@@ -8,7 +8,7 @@ export default function Posicao() {
   const navigate = useNavigate()
 
   const [positions, setPositions] = useState([
-    { id: "goleiro", name: "Goleiro", player: "Disponível", available: true },
+    { id: "goleiro", name: "Goleira", player: "Disponível", available: true },
     { id: "defensora1", name: "Defensora", player: "Disponível", available: true },
     { id: "defensora2", name: "Defensora", player: "Disponível", available: true },
     { id: "meia1", name: "Ala", player: "Disponível", available: true },

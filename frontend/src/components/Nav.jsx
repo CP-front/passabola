@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { useState } from "react"
 import passaBola from "../assets/passaBola_3x1fundo.png";
 import { useNavigate } from "react-router-dom";
-import AuthModal from "./Modal"; // importa o modal que fizemos
+import AuthModal from "./Modal"; 
 
 const Nav = () => {
   const navigate = useNavigate();

@@ -94,7 +94,7 @@ export default function AuthModal({ isOpen, onClose, type, setModalType }) {
               <p className="text-sm mt-3">
                 Não tem conta?{" "}
                 <span
-                  onClick={() => setModalType("register")}
+                  onClick={() => { setModalType("register"); setAuthModalOpen(true); }}
                   className="text-pink-600 cursor-pointer"
                 >
                   Cadastre-se
@@ -130,6 +130,14 @@ export default function AuthModal({ isOpen, onClose, type, setModalType }) {
                   type="email"
                   name="email"
                   placeholder="E-mail"
+                  className="border p-2 rounded border-pink-500"
+                  required
+                  onChange={handleChange}
+                />
+                <input
+                  type="cep"
+                  name="CEP"
+                  placeholder="CEP"
                   className="border p-2 rounded border-pink-500"
                   required
                   onChange={handleChange}
@@ -171,7 +179,7 @@ export default function AuthModal({ isOpen, onClose, type, setModalType }) {
               <p className="text-sm mt-3">
                 Já tem conta?{" "}
                 <span
-                  onClick={() => setModalType("login")}
+                  onClick={() => { setModalType("login"); setAuthModalOpen(true); }}
                   className="text-purple-600 cursor-pointer"
                 >
                   Fazer Login
