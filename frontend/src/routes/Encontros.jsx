@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react"
+import { CiCalendar } from "react-icons/ci";
+import { LuMapPinned } from "react-icons/lu";
+import { GrGroup } from "react-icons/gr";
 
 function Encontros() {
   const navigate = useNavigate();
@@ -20,13 +23,13 @@ function Encontros() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Card 1 */}
         <div className="bg-white rounded-xl shadow p-6">
-          <h2 className="text-lg font-semibold text-purple-700 mb-2">Playball Pompeia</h2>
+          <h2 className="flex items-center gap-2 text-lg font-semibold text-purple-700 mb-2"><LuMapPinned/>Playball Pompeia</h2>
           <div className="flex items-center gap-2 text-gray-600 text-sm mb-2">
-            <span>📅</span>
+            <span><CiCalendar size={18}/></span>
             <span>09/06/2025</span>
           </div>
           <div className="flex items-center gap-2 text-sm text-purple-600 mb-4">
-            <span>👥</span>
+            <span><GrGroup/></span>
             <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs">
               14 vagas restantes
             </span>
@@ -39,13 +42,13 @@ function Encontros() {
 
         {/* Card 2 */}
         <div className="bg-white rounded-xl shadow p-6">
-          <h2 className="text-lg font-semibold text-purple-700 mb-2">Playball Pompeia</h2>
+          <h2 className="flex items-center gap-2 text-lg font-semibold text-purple-700 mb-2"><LuMapPinned/>Playball Pompeia</h2>
           <div className="flex items-center gap-2 text-gray-600 text-sm mb-2">
-            <span>📅</span>
+            <span><CiCalendar/></span>
             <span>12/06/2025</span>
           </div>
           <div className="flex items-center gap-2 text-sm text-purple-600 mb-4">
-            <span>👥</span>
+            <span><GrGroup/></span>
             <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs">
               14 vagas restantes
             </span>
