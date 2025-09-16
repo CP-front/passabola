@@ -43,6 +43,7 @@ app.post("/login", (req, res) => {
   if (usuario) {
     return res.status(200).json({ message: "Login realizado com sucesso!" });
   }
+  console.log("Novo usuário logado:", { email, senha });
 
   return res.status(401).json({ error: "Credenciais inválidas" });
 });
