@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function AuthModal({ isOpen, onClose, type }) {
+export default function AuthModal({ isOpen, onClose, type, setModalType }) {
   if (!isOpen) return null;
 
   return (
@@ -34,8 +34,11 @@ export default function AuthModal({ isOpen, onClose, type }) {
             <p className="text-sm mt-3">
               Não tem conta?{" "}
               <span 
-              onClick={() => { setModalType("register"); setAuthModalOpen(true); }}
-              className="text-purple-600 cursor-pointer">Cadastre-se</span>
+                onClick={() => setModalType("register")}
+                className="text-pink-600 cursor-pointer"
+              >
+                Cadastre-se
+              </span>
             </p>
           </>
         ) : (
@@ -59,9 +62,12 @@ export default function AuthModal({ isOpen, onClose, type }) {
             </form>
             <p className="text-sm mt-3">
               Já tem conta?{" "}
-              <button 
-              onClick={() => { setModalType("login"); setAuthModalOpen(true); }}
-              className="text-purple-600 cursor-pointer">Fazer Login</button>
+              <span 
+                onClick={() => setModalType("login")}
+                className="text-purple-600 cursor-pointer"
+              >
+                Fazer Login
+              </span>
             </p>
           </>
         )}

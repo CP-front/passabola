@@ -1,81 +1,50 @@
 import express from "express";
-import mongoose from "mongoose";
-import bcrypt from "bcryptjs";
+import bodyParser from "body-parser";
 import cors from "cors";
 
 const app = express();
 const PORT = 5000;
 
-// Middlewares
+// middlewares
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Conexão MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/passaBola", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// rota de cadastro
+app.post("/cadastro", (req, res) => {
+  const { nome, cpf, email, telefone, senha, confirmarSenha } = req.body;
 
-// Schema Usuário
-const userSchema = new mongoose.Schema({
-  nome: String,
-  cpf: String,
-  email: { type: String, unique: true },
-  telefone: String,
-  senha: String,
-});
-
-const User = mongoose.model("User", userSchema);
-
-// Rota de Cadastro
-app.post("/api/cadastro", async (req, res) => {
-  try {
-    const { nome, cpf, email, telefone, senha } = req.body;
-
-    // Verifica se já existe email
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ message: "E-mail já cadastrado!" });
-    }
-
-    // Criptografa senha
-    const hashedPassword = await bcrypt.hash(senha, 10);
-
-    const newUser = new User({
-      nome,
-      cpf,
-      email,
-      telefone,
-      senha: hashedPassword,
-    });
-
-    await newUser.save();
-    res.status(201).json({ message: "Usuário cadastrado com sucesso!" });
-  } catch (err) {
-    res.status(500).json({ message: "Erro no servidor", error: err.message });
+  if (!nome || !cpf || !email || !telefone || !senha || !confirmarSenha) {
+    return res.status(400).json({ error: "Preencha todos os campos" });
   }
-});
 
-// Rota de Login
-app.post("/api/login", async (req, res) => {
-  try {
-    const { email, senha } = req.body;
-
-    const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ message: "Usuário não encontrado" });
-
-    const isPasswordValid = await bcrypt.compare(senha, user.senha);
-    if (!isPasswordValid) {
-      return res.status(400).json({ message: "Senha incorreta" });
-    }
-
-    res.json({ message: "Login realizado com sucesso", user });
-  } catch (err) {
-    res.status(500).json({ message: "Erro no servidor", error: err.message });
+  if (senha !== confirmarSenha) {
+    return res.status(400).json({ error: "As senhas não conferem" });
   }
+
+  // aqui você poderia salvar no banco de dados
+  console.log("Novo usuário cadastrado:", { nome, cpf, email, telefone });
+
+  return res.status(200).json({ message: "Usuário cadastrado com sucesso!" });
 });
 
-// Inicia servidor
+// rota de login
+app.post("/login", (req, res) => {
+  const { email, senha } = req.body;
+
+  if (!email || !senha) {
+    return res.status(400).json({ error: "Preencha todos os campos" });
+  }
+
+  // validação fake
+  if (email === "teste@email.com" && senha === "123456") {
+    return res.status(200).json({ message: "Login realizado com sucesso!" });
+  }
+
+  return res.status(401).json({ error: "Credenciais inválidas" });
+});
+
+// iniciar servidor
 app.listen(PORT, () => {
-  console.log(`🚀 Server rodando em http://localhost:${PORT}`);
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
