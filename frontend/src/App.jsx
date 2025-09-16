@@ -7,6 +7,7 @@ import Explorar from './routes/Explorar'
 import Encontros from './routes/Encontros'
 import Time from './routes/Time'
 import Posicao from './routes/Posicao'
+import PosicaoRosa from './routes/PosicaoRosa'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/explorar/encontros" element={<Encontros />} />
           <Route path="/explorar/encontros/time" element={<Time />} />
           <Route path="/explorar/encontros/time/posicao" element={<Posicao />} />
+          <Route path="/explorar/encontros/time/posicaoRosa" element={<PosicaoRosa />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </div>

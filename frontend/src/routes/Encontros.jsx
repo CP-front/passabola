@@ -25,11 +25,11 @@ function Encontros() {
         <div className="bg-white rounded-xl shadow p-6">
           <h2 className="flex items-center gap-2 text-lg font-semibold text-purple-700 mb-2"><LuMapPinned/>Playball Pompeia</h2>
           <div className="flex items-center gap-2 text-gray-600 text-sm mb-2">
-            <span><CiCalendar size={18}/></span>
+            <span><CiCalendar size={20}/></span>
             <span>09/06/2025</span>
           </div>
           <div className="flex items-center gap-2 text-sm text-purple-600 mb-4">
-            <span><GrGroup/></span>
+            <span><GrGroup size={18}/></span>
             <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs">
               14 vagas restantes
             </span>
@@ -44,11 +44,11 @@ function Encontros() {
         <div className="bg-white rounded-xl shadow p-6">
           <h2 className="flex items-center gap-2 text-lg font-semibold text-purple-700 mb-2"><LuMapPinned/>Playball Pompeia</h2>
           <div className="flex items-center gap-2 text-gray-600 text-sm mb-2">
-            <span><CiCalendar/></span>
+            <span><CiCalendar size={20}/></span>
             <span>12/06/2025</span>
           </div>
           <div className="flex items-center gap-2 text-sm text-purple-600 mb-4">
-            <span><GrGroup/></span>
+            <span><GrGroup size={18}/></span>
             <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs">
               14 vagas restantes
             </span>

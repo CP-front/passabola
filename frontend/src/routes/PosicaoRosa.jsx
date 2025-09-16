@@ -3,7 +3,7 @@
 import { ArrowLeft, Check, Plus } from "lucide-react"
 import { useNavigate } from "react-router-dom";
 
-export default function Posicao() {
+export default function PosicaoRosa() {
 
   const navigate = useNavigate();
 
@@ -41,20 +41,20 @@ export default function Posicao() {
         <div className="flex items-center gap-3 font-bold">
           <button 
           onClick={() => navigate("/explorar/encontros/time")}
-          className="flex items-center gap-2 px-4 py-2 border-2 cursor-pointer rounded-md text-sm text-purple-600 border-purple-600 hover:bg-purple-100 font-bold">
+          className="flex items-center gap-2 px-4 py-2 border-2 cursor-pointer rounded-md text-sm text-pink-600 border-pink-600 hover:bg-pink-100 font-bold">
             <ArrowLeft className="w-4 h-4" />
             Voltar
           </button>
-          <h1 className="text-2xl font-semibold text-purple-600">Escolha sua posição - Time Passa</h1>
+          <h1 className="text-2xl font-semibold text-pink-600">Escolha sua posição - Time Bola</h1>
         </div>
-        <p className="text-sm text-purple-600 ml-28 mb-6">Playball Pompeia - 09/06/2025</p>
+        <p className="text-sm text-pink-600 ml-28 mb-6">Playball Pompeia - 09/06/2025</p>
       </div>
 
       <div className="px-95">
       <div className="grid lg:grid-cols-2 gap-6 max-w-6xl">
         {/* Soccer Field Section */}
         <div className="bg-white rounded-xl shadow p-6">
-          <h2 className="text-xl font-semibold text-purple-600 mb-4 text-center">Campo de Futebol</h2>
+          <h2 className="text-xl font-semibold text-pink-600 mb-4 text-center">Campo de Futebol</h2>
 
           <div className="relative bg-green-500 rounded-lg p-4 aspect-[3/4] max-w-md mx-auto">
             {/* Field markings */}
@@ -83,7 +83,7 @@ export default function Posicao() {
                 className="absolute -translate-x-1/2 -translate-y-1/2"
                 style={{ left: pos.x, top: pos.y }}
               >
-                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-purple-600 text-white">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-pink-600 text-white">
                   {pos.filled ? <Check className="w-5 h-5"/> : <Plus className="w-5 h-5 cursor-pointer" />}
                 </div>
               </div>
@@ -92,12 +92,12 @@ export default function Posicao() {
 
           {/* Reserve Bench */}
           <div className="mt-6">
-          <h3 className="text-lg font-semibold text-purple-600 mb-3">Banco de Reservas</h3>
+          <h3 className="text-lg font-semibold text-pink-600 mb-3">Banco de Reservas</h3>
           <div className="flex gap-3">
             {reserveBench.map((reserva) => (
               <div
                 key={reserva.id}
-                className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white"
+                className="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white"
               >
                 {reserva.filled ? <Check className="w-5 h-5" /> : <Plus className="w-5 h-5 cursor-pointer" />}
               </div>
@@ -108,23 +108,23 @@ export default function Posicao() {
 
         {/* Team Lineup Section */}
         <div className="bg-white rounded-xl shadow p-6">
-          <h2 className="text-xl font-semibold text-purple-600 mb-4">Escalação do Time</h2>
+          <h2 className="text-xl font-semibold text-pink-600 mb-4">Escalação do Time</h2>
 
           <div className="space-y-3 mb-6">
             {positions.map((position) => (
               <div
                 key={position.id}
-                className={`p-3 rounded-lg ${position.available ? "bg-purple-100 cursor-pointer" : "bg-gray-100 cursor-default"}`}
+                className={`p-3 rounded-lg ${position.available ? "bg-pink-100 cursor-pointer" : "bg-gray-100 cursor-default"}`}
               >
-                <div className="font-bold text-purple-600 text-sm">{position.name}</div>
-                <div className={`text-sm ${position.available ? "text-purple-500 cursor-pointer" : "text-purple-700 cursor-default"}`}>
+                <div className="font-bold text-pink-600 text-sm">{position.name}</div>
+                <div className={`text-sm ${position.available ? "text-pink-500 cursor-pointer" : "text-pink-700 cursor-default"}`}>
                   {position.player}
                 </div>
               </div>
             ))}
           </div>
 
-          <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 rounded-lg cursor-pointer">
+          <button className="w-full bg-pink-600 hover:bg-pink-700 text-white font-medium py-2 rounded-lg cursor-pointer">
             Confirmar Inscrição
           </button>
         </div>

@@ -54,7 +54,7 @@ export default function Time() {
             14 vagas restantes
           </p>
           <button
-            onClick={() => navigate("/explorar/encontros/time/posicao")}
+            onClick={() => navigate("/explorar/encontros/time/posicaoRosa")}
             className="mt-6 w-full py-3 bg-pink-500 text-white font-semibold rounded-lg hover:bg-pink-600 transition cursor-pointer shadow transform hover:scale-105 hover:shadow-lg"
           >
             Escolher Time Bola
