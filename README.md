@@ -36,6 +36,7 @@ O projeto busca **reduzir a desorganização** nos encontros presenciais, **aume
 - **Estilização**: TailwindCSS  
 - **Controle de Rotas**: React Router DOM  
 - **Versionamento**: Git/GitHub  
+- **Comandos**: npm init -y;  npm install node-fetch
 
 ---
 
