@@ -38,8 +38,7 @@ const Home = () => {
               <CiCalendar className="" size={24} />Participar dos encontros
           </button>
           <button onClick={() => navigate("/jogos")} className="px-6 py-3 rounded-md font-medium border border-purple-600 text-purple-700 hover:bg-purple-50 transition transform hover:scale-105 hover:shadow-lg flex items-center space-x-2 cursor-pointer">
-            <span><IoIosPeople size={24}/></span>
-            <span>Saiba Mais</span>
+            <span>Últimos jogos - Seleção</span>
           </button>
         </div>
 

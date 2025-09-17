@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const fetch = require("node-fetch");
 
 const app = express();
 const PORT = 5000;
@@ -11,13 +10,11 @@ app.use(express.json());
 // --- rota de exemplo consumindo TheSportsDB ---
 app.get("/api/jogos", async (req, res) => {
   try {
-    // Exemplo: buscar últimos 5 jogos da seleção feminina dos EUA
-    const url = "https://www.thesportsdb.com/api/v1/json/3/eventslast.php?id=134564"; 
+    const url = "https://www.thesportsdb.com/api/v1/json/3/eventslast.php?id=136824"; 
     
-    const response = await fetch(url);
+    const response = await fetch(url); // fetch nativo do Node 18+
     const data = await response.json();
 
-    // Extrair só as infos que interessam (nome, data, placar)
     const jogos = data.results.map(evento => ({
       partida: `${evento.strHomeTeam} vs ${evento.strAwayTeam}`,
       data: evento.dateEvent,
@@ -26,7 +23,6 @@ app.get("/api/jogos", async (req, res) => {
     }));
 
     res.json(jogos);
-
   } catch (error) {
     console.error("Erro ao buscar jogos:", error);
     res.status(500).json({ error: "Erro ao buscar jogos" });
