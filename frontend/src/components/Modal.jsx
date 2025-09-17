@@ -6,7 +6,7 @@ export default function AuthModal({ isOpen, onClose, type, setModalType }) {
   const [message, setMessage] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
-  const [successColor, setSuccessColor] = useState("purple"); // cor padrão
+  const [successColor, setSuccessColor] = useState("purple");
 
   if (!isOpen) return null;
 
@@ -15,36 +15,37 @@ export default function AuthModal({ isOpen, onClose, type, setModalType }) {
   };
 
   const handleSubmit = async (e, endpoint) => {
-  e.preventDefault();
-  setMessage("");
+    e.preventDefault();
+    setMessage("");
 
-  try {
-    const response = await fetch(`http://localhost:5000/${endpoint}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await fetch(`http://localhost:5000/${endpoint}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (response.ok) {
-      if (endpoint === "cadastro") {
-        setSuccessMessage("Cadastro Realizado!");
-        setSuccessColor("pink");
-      } else if (endpoint === "login") {
-        setSuccessMessage("Login Realizado!");
-        setSuccessColor("purple");
+      if (response.ok) {
+        // Define mensagem e cor de sucesso
+        if (endpoint === "cadastro") {
+          setSuccessMessage("Cadastro Realizado!");
+          setSuccessColor("pink");
+        } else if (endpoint === "login") {
+          setSuccessMessage("Login Realizado!");
+          setSuccessColor("purple");
+        }
+
+        // Abre o modal de sucesso antes de fechar o principal
+        setShowSuccess(true);
+      } else {
+        setMessage(data.error);
       }
-
-      onClose(); // fecha modal principal
-      setShowSuccess(true); // abre modal de sucesso
-    } else {
-      setMessage(data.error);
+    } catch (error) {
+      setMessage("Erro ao conectar com o servidor");
     }
-  } catch (error) {
-    setMessage("Erro ao conectar com o servidor");
-  }
-};
+  };
 
   return (
     <>
@@ -94,7 +95,7 @@ export default function AuthModal({ isOpen, onClose, type, setModalType }) {
               <p className="text-sm mt-3">
                 Não tem conta?{" "}
                 <span
-                  onClick={() => { setModalType("register"); setAuthModalOpen(true); }}
+                  onClick={() => { setModalType("register"); }}
                   className="text-pink-600 cursor-pointer"
                 >
                   Cadastre-se
@@ -136,7 +137,7 @@ export default function AuthModal({ isOpen, onClose, type, setModalType }) {
                 />
                 <input
                   type="cep"
-                  name="CEP"
+                  name="cep"
                   placeholder="CEP"
                   className="border p-2 rounded border-pink-500"
                   required
@@ -179,7 +180,7 @@ export default function AuthModal({ isOpen, onClose, type, setModalType }) {
               <p className="text-sm mt-3">
                 Já tem conta?{" "}
                 <span
-                  onClick={() => { setModalType("login"); setAuthModalOpen(true); }}
+                  onClick={() => { setModalType("login"); }}
                   className="text-purple-600 cursor-pointer"
                 >
                   Fazer Login
@@ -190,10 +191,13 @@ export default function AuthModal({ isOpen, onClose, type, setModalType }) {
         </div>
       </div>
 
-      {/* Modal de sucesso com cor dinâmica */}
+      {/* Modal de sucesso */}
       <SuccessModal
         isOpen={showSuccess}
-        onClose={() => setShowSuccess(false)}
+        onClose={() => {
+          setShowSuccess(false);
+          onClose(); // fecha modal principal após fechar o modal de sucesso
+        }}
         message={successMessage}
         color={successColor}
       />

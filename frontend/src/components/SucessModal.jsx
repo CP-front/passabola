@@ -17,15 +17,6 @@ export default function SuccessModal({ isOpen, onClose, message, color }) {
 
   const current = colorClasses[color] || colorClasses.purple;
 
-  // Auto fechar em 3 segundos
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      onClose();
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, [onClose]);
-
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
       {/* Fundo escuro */}
@@ -39,7 +30,7 @@ export default function SuccessModal({ isOpen, onClose, message, color }) {
         {/* Botão fechar */}
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-gray-600 hover:text-black"
+          className="absolute top-2 right-2 text-gray-600 hover:text-black cursor-pointer"
         >
           ✕
         </button>
@@ -50,7 +41,7 @@ export default function SuccessModal({ isOpen, onClose, message, color }) {
 
         <button
           onClick={onClose}
-          className={`${current.button} text-white py-2 px-6 rounded transition`}
+          className={`${current.button} text-white py-2 px-6 rounded transition cursor-pointer`}
         >
           Fechar
         </button>
