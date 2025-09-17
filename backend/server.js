@@ -1,8 +1,37 @@
-import express from "express";
-import cors from "cors";
+const express = require("express");
+const cors = require("cors");
+const fetch = require("node-fetch");
 
 const app = express();
 const PORT = 5000;
+
+app.use(cors());
+app.use(express.json());
+
+// --- rota de exemplo consumindo TheSportsDB ---
+app.get("/api/jogos", async (req, res) => {
+  try {
+    // Exemplo: buscar últimos 5 jogos da seleção feminina dos EUA
+    const url = "https://www.thesportsdb.com/api/v1/json/3/eventslast.php?id=134564"; 
+    
+    const response = await fetch(url);
+    const data = await response.json();
+
+    // Extrair só as infos que interessam (nome, data, placar)
+    const jogos = data.results.map(evento => ({
+      partida: `${evento.strHomeTeam} vs ${evento.strAwayTeam}`,
+      data: evento.dateEvent,
+      horario: evento.strTime,
+      placar: `${evento.intHomeScore} - ${evento.intAwayScore}`
+    }));
+
+    res.json(jogos);
+
+  } catch (error) {
+    console.error("Erro ao buscar jogos:", error);
+    res.status(500).json({ error: "Erro ao buscar jogos" });
+  }
+});
 
 // middlewares
 app.use(cors());

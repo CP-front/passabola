@@ -8,6 +8,7 @@ import Encontros from './routes/Encontros'
 import Time from './routes/Time'
 import Posicao from './routes/Posicao'
 import PosicaoRosa from './routes/PosicaoRosa'
+import Jogos from './routes/Jogos'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <div className="min-h-screen bg-[#f2f2f2]">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path='/jogos' element={<Jogos />} />
           <Route path="/explorar" element={<Explorar />} />
           <Route path="/explorar/encontros" element={<Encontros />} />
           <Route path="/explorar/encontros/time" element={<Time />} />

@@ -37,7 +37,7 @@ const Home = () => {
           <button onClick={() => navigate("/explorar")} className="flex items-center gap-2 px-6 py-3 rounded-md font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 shadow hover:opacity-90 transition transform hover:scale-105 hover:shadow-lg cursor-pointer">
               <CiCalendar className="" size={24} />Participar dos encontros
           </button>
-          <button className="px-6 py-3 rounded-md font-medium border border-purple-600 text-purple-700 hover:bg-purple-50 transition transform hover:scale-105 hover:shadow-lg flex items-center space-x-2 cursor-pointer">
+          <button onClick={() => navigate("/jogos")} className="px-6 py-3 rounded-md font-medium border border-purple-600 text-purple-700 hover:bg-purple-50 transition transform hover:scale-105 hover:shadow-lg flex items-center space-x-2 cursor-pointer">
             <span><IoIosPeople size={24}/></span>
             <span>Saiba Mais</span>
           </button>
