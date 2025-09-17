@@ -13,9 +13,9 @@ const usuarios = []; // lista em memória
 
 // rota de cadastro
 app.post("/cadastro", (req, res) => {
-  const { nome, cpf, email, telefone, senha, confirmarSenha } = req.body;
+  const { nome, cpf, email, cep, telefone, senha, confirmarSenha } = req.body;
 
-  if (!nome || !cpf || !email || !telefone || !senha || !confirmarSenha) {
+  if (!nome || !cpf || !email || !cep || !telefone || !senha || !confirmarSenha) {
     return res.status(400).json({ error: "Preencha todos os campos" });
   }
 
@@ -23,10 +23,10 @@ app.post("/cadastro", (req, res) => {
     return res.status(400).json({ error: "As senhas não conferem" });
   }
 
-  console.log("Novo usuário cadastrado:", { nome, cpf, email, telefone, senha });
+  console.log("Novo usuário cadastrado:", { nome, cpf, email, cep, telefone, senha });
 
   // salvar usuário em memória
-  usuarios.push({ nome, cpf, email, telefone, senha });
+  usuarios.push({ nome, cpf, email, cep, telefone, senha });
   return res.status(200).json({ message: "Usuário cadastrado com sucesso!" });
 });
 
