@@ -62,7 +62,7 @@ const Explorar = () => {
           <div className="flex justify-center mt-8">
             <button onClick={() => navigate("/explorar/encontros")}
               type="submit"
-              className=" flex items-center gap-2 justifyw-full md:w-auto bg-gradient-to-r from-purple-600 to-pink-500 text-white px-40 py-3 rounded-lg font-medium shadow hover:opacity-90 transition cursor-pointer transform hover:scale-105 hover:shadow-lg"
+              className=" flex items-center gap-2 md:w-auto bg-gradient-to-r from-purple-600 to-pink-500 text-white px-40 py-3 rounded-lg font-medium shadow hover:opacity-90 transition cursor-pointer transform hover:scale-105 hover:shadow-lg"
             >
               <FaMagnifyingGlass/> Buscar Encontros
             </button>
