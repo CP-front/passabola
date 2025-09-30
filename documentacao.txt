@@ -1,0 +1,51 @@
+📖 Documentação de Endpoints
+Descrição detalhada dos pontos de acesso à API.
+
+🔐 Autenticação
+
+Cadastro de Usuário
+
+Método: POST
+
+URL: /cadastro
+
+Enviar no corpo da requisição (JSON): nome, cpf, email, cep, telefone, senha e confirmarSenha.
+
+Resposta de sucesso (200): retorna a mensagem "Usuário cadastrado com sucesso!".
+
+Resposta de erro (400): retorna mensagem de erro caso falte algum campo ou as senhas não coincidam.
+
+Login de Usuário
+
+Método: POST
+
+URL: /login
+
+Enviar no corpo da requisição (JSON): email e senha.
+
+Resposta de sucesso (200): retorna a mensagem "Login realizado com sucesso!".
+
+Resposta de erro (401): retorna mensagem de erro caso as credenciais sejam inválidas.
+
+⚽ Jogos (TheSportsDB)
+
+Listar Jogos Recentes
+
+Método: GET
+
+URL: /api/jogos
+
+Resposta de sucesso (200): retorna uma lista de partidas no formato JSON, contendo:
+
+Partida (exemplo: Time A vs Time B)
+
+Data
+
+Horário
+
+Placar (exemplo: 2 - 1)
+
+Resposta de erro (500): retorna mensagem "Erro ao buscar jogos" caso ocorra falha na requisição externa.
+
+👩‍💻 Observação
+Os dados de usuários cadastrados ficam armazenados apenas em memória enquanto o servidor estiver rodando, ou seja, eles são perdidos quando o servidor é reiniciado.
