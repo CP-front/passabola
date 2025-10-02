@@ -1,9 +1,11 @@
 const express = require("express");
+const fs= require("fs"); //file system
+const path= require("path")// caminho do arquivo do banco de dados
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const cors = require("cors");
-
 const app = express();
 const PORT = 5000;
-
 app.use(cors());
 app.use(express.json());
 
@@ -29,6 +31,23 @@ app.get("/api/jogos", async (req, res) => {
   }
 });
 
+// CRIAR UMA STRING PARA RENOVAR A CHAVE DE AUTENTICAÇÃO
+const SECRET_KEY= "12345678910";
+
+// LOCAL ONDE ESTA O ARQUIVO DO SEU BANCO DE DADOS
+const localDados =path.join(__dirname,'data/usuarios.json');
+
+// FUNÇÃO PARA LER OS DADOS DO ARQUIVO
+const consultarUsuarios=()=>{
+    const data = fs.readFileSync(localDados,"utf-8");
+    return JSON.parse(data);
+}
+
+// FUNÇÃO PARA GRAVAR DADOS NO ARQUIVO
+const salvarUsuarios=(users)=>{
+    fs.writeFileSync(localDados,JSON.stringify(users,null,2))
+}
+
 // middlewares
 app.use(cors());
 app.use(express.json());
@@ -37,18 +56,27 @@ app.use(express.urlencoded({ extended: true }));
 const usuarios = []; // lista em memória
 
 // rota de cadastro
-app.post("/cadastro", (req, res) => {
+app.post("/cadastro", async(req, res) => {
   const { nome, cpf, email, cep, telefone, senha, confirmarSenha } = req.body;
 
   if (!nome || !cpf || !email || !cep || !telefone || !senha || !confirmarSenha) {
     return res.status(400).json({ error: "Preencha todos os campos" });
+  }
+  const users= consultarUsuarios();
+  if(users.find(user=>user.email == email)){
+        return res.status(400).json({message: "Email já cadastrado no banco de dados"})
   }
 
   if (senha !== confirmarSenha) {
     return res.status(400).json({ error: "As senhas não conferem" });
   }
 
-  console.log("Novo usuário cadastrado:", { nome, cpf, email, cep, telefone, senha });
+  // CRIPTOGRAFAR A SENHA
+    const hashSenha = await bcrypt.hash(senha,10)
+    const novoUsuario = {id:Date.now(),email, senha:hashSenha};
+    users.push(novoUsuario);
+    salvarUsuarios(users);
+    res.status(200).json({message: "Usuario registrado com sucesso"})
 
   // salvar usuário em memória
   usuarios.push({ nome, cpf, email, cep, telefone, senha });
@@ -56,22 +84,37 @@ app.post("/cadastro", (req, res) => {
 });
 
 // rota de login
-app.post("/login", (req, res) => {
+app.post("/login", async(req, res) => {
   const { email, senha } = req.body;
+  const users = consultarUsuarios();
+  const user = users.find(user=>user.email === email);
 
-  if (!email || !senha) {
-    return res.status(400).json({ error: "Preencha todos os campos" });
-  }
-
-  const usuario = usuarios.find((u) => u.email === email && u.senha === senha);
-
-  if (usuario) {
-    return res.status(200).json({ message: "Login realizado com sucesso!" });
-  }
-  console.log("Novo usuário logado:", { email, senha });
-
-  return res.status(401).json({ error: "Credenciais inválidas" });
+  if(!user){
+        return res.status(400).json({message: "Usuário/senha Inválidos"})
+    }
+    const senhaValida= await bcrypt.compare(senha, user.senha);
+    if(!senhaValida){
+         return res.status(400).json({message: "Senha inválida"})
+    }
+    // AUTENTICAÇÃO DO JWT
+    const token = jwt.sign({id:user.id, nome:user.nome, email:user.email},SECRET_KEY,{expiresIn:"10m"});
+    res.json({message:"Login realizado com sucesso",token})
 });
+
+//MIDDLEWARE QUE VAI PROTEGER AS ROTAS DA API E GARANTIR QUE APENAS 
+//USUARIOS COM UM TOKEN VALIDO POSSA ACESSAR
+
+const autenticaToken =(req,res,next)=>{
+    const auth =req.headers['authorization'];
+    const token = auth && auth.split(' ')[1];
+    if(token ==null) return res.sendStatus(401);
+
+    jwt.verify(token,SECRET_KEY,(erro, user)=>{
+        if(erro) return res.sendStatus(403)
+        req.user =user;
+        next();
+    })
+}
 
 // iniciar servidor
 app.listen(PORT, () => {

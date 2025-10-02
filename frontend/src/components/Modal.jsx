@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SuccessModal from "./SucessModal";
 
-export default function AuthModal({ isOpen, onClose, type, setModalType }) {
+export default function AuthModal({ isOpen, onClose, setModalType }) {
   const [formData, setFormData] = useState({});
   const [message, setMessage] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
@@ -43,7 +43,7 @@ export default function AuthModal({ isOpen, onClose, type, setModalType }) {
         setMessage(data.error);
       }
     } catch (error) {
-      setMessage("Erro ao conectar com o servidor");
+      setMessage("Erro ao conectar com o servidor",error);
     }
   };
 
@@ -64,45 +64,6 @@ export default function AuthModal({ isOpen, onClose, type, setModalType }) {
             ✕
           </button>
 
-          {type === "login" ? (
-            <>
-              <h2 className="text-xl font-bold text-purple-600 mb-4">Login</h2>
-              <form
-                onSubmit={(e) => handleSubmit(e, "login")}
-                className="flex flex-col gap-3"
-              >
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="E-mail"
-                  className="border p-2 rounded border-purple-500"
-                  required
-                  onChange={handleChange}
-                />
-                <input
-                  type="password"
-                  name="senha"
-                  placeholder="Senha"
-                  className="border p-2 rounded border-purple-500"
-                  required
-                  onChange={handleChange}
-                />
-                <button className="bg-purple-600 text-white py-2 rounded hover:bg-purple-800 cursor-pointer">
-                  Entrar
-                </button>
-              </form>
-              {message && <p className="text-sm mt-2 text-red-500">{message}</p>}
-              <p className="text-sm mt-3">
-                Não tem conta?{" "}
-                <span
-                  onClick={() => { setModalType("register"); }}
-                  className="text-pink-600 cursor-pointer"
-                >
-                  Cadastre-se
-                </span>
-              </p>
-            </>
-          ) : (
             <>
               <h2 className="text-xl font-bold text-pink-600 mb-4">
                 Cadastro de Usuário
@@ -183,11 +144,10 @@ export default function AuthModal({ isOpen, onClose, type, setModalType }) {
                   onClick={() => { setModalType("login"); }}
                   className="text-purple-600 cursor-pointer"
                 >
-                  Fazer Login
+                 <a href="/ModalLogin">Fazer Login</a> 
                 </span>
               </p>
             </>
-          )}
         </div>
       </div>
 
