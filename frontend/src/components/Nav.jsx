@@ -4,14 +4,9 @@ import passaBola from "../assets/passaBola_3x1fundo.png";
 import { useNavigate } from "react-router-dom";
 import AuthModal from "./Modal";
 import LoginModal from "./ModalLogin";
-<<<<<<< HEAD
-import ModalWrapper from "./ModalWrapper"; // ✅ adicionado
 import { useAuth } from "../context/AuthContext";
-=======
-import { useAuth } from "../components/AuthContext";
->>>>>>> 33a9b86364fc54698ba296798723a764422d1c44
 
-const Nav = () => {  // esse é o nav.jsx
+const Nav = () => {  
   const navigate = useNavigate();
   const { user, logout } = useAuth();
 
@@ -77,13 +72,19 @@ const Nav = () => {  // esse é o nav.jsx
         </div>
       </nav>
 
-      {/* ✅ Substitui os dois modais por um único wrapper */}
-      {authModalOpen && (
-        <ModalWrapper
+      {/* Modal */}
+      {modalType === "register" && (
+        <AuthModal
           isOpen={authModalOpen}
           onClose={() => setAuthModalOpen(false)}
           setModalType={setModalType}
-          modalType={modalType}
+        />
+      )}
+
+      {modalType === "login" && (
+        <LoginModal
+          isOpen={authModalOpen}
+          onClose={() => setAuthModalOpen(false)}
         />
       )}
     </>
