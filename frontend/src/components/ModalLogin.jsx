@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SuccessModal from "./SucessModal";
+import { useAuth } from "../context/AuthContext";
 
 export default function AuthModal({ isOpen, onClose}) {
   const [formData, setFormData] = useState({});
@@ -8,18 +9,20 @@ export default function AuthModal({ isOpen, onClose}) {
   const [successMessage, setSuccessMessage] = useState("");
   const [successColor, setSuccessColor] = useState("purple");
 
+  const { login } = useAuth();
+
   if (!isOpen) return null;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e, endpoint) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
 
     try {
-      const response = await fetch(`http://localhost:5000/${endpoint}`, {
+      const response = await fetch("http://localhost:5000/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -28,22 +31,15 @@ export default function AuthModal({ isOpen, onClose}) {
       const data = await response.json();
 
       if (response.ok) {
-        // Define mensagem e cor de sucesso
-        if (endpoint === "cadastro") {
-          setSuccessMessage("Cadastro Realizado!");
-          setSuccessColor("pink");
-        } else if (endpoint === "login") {
-          setSuccessMessage("Login Realizado!");
-          setSuccessColor("purple");
-        }
-
-        // Abre o modal de sucesso antes de fechar o principal
+        login(data.user || formData);
+        setSuccessMessage("Login Realizado!");
+        setSuccessColor("purple");
         setShowSuccess(true);
       } else {
         setMessage(data.error);
       }
-    } catch (error) {
-      setMessage("Erro ao conectar com o servidor",error);
+    } catch {
+      setMessage("Erro ao conectar com o servidor");
     }
   };
 
@@ -66,10 +62,7 @@ export default function AuthModal({ isOpen, onClose}) {
 
                 <>
                 <h2 className="text-xl font-bold text-purple-600 mb-4">Login</h2>
-                <form
-                    onSubmit={(e) => handleSubmit(e, "login")}
-                    className="flex flex-col gap-3"
-                >
+                <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                     <input
                     type="email"
                     name="email"
@@ -97,7 +90,7 @@ export default function AuthModal({ isOpen, onClose}) {
                     
                     className="text-pink-600 cursor-pointer"
                     >
-                    <a href="/register">Cadastrar-se</a>
+                    <a href="">Cadastrar-se</a>
                     </span>
                 </p>
                 </>

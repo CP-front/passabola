@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SuccessModal from "./SucessModal";
+import { useAuth } from "../context/AuthContext";
 
 export default function AuthModal({ isOpen, onClose, setModalType }) {
   const [formData, setFormData] = useState({});
@@ -8,18 +9,20 @@ export default function AuthModal({ isOpen, onClose, setModalType }) {
   const [successMessage, setSuccessMessage] = useState("");
   const [successColor, setSuccessColor] = useState("purple");
 
+const { register } = useAuth();
+
   if (!isOpen) return null;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e, endpoint) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
 
     try {
-      const response = await fetch(`http://localhost:5000/${endpoint}`, {
+      const response = await fetch("http://localhost:5000/cadastro", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -28,22 +31,15 @@ export default function AuthModal({ isOpen, onClose, setModalType }) {
       const data = await response.json();
 
       if (response.ok) {
-        // Define mensagem e cor de sucesso
-        if (endpoint === "cadastro") {
-          setSuccessMessage("Cadastro Realizado!");
-          setSuccessColor("pink");
-        } else if (endpoint === "login") {
-          setSuccessMessage("Login Realizado!");
-          setSuccessColor("purple");
-        }
-
-        // Abre o modal de sucesso antes de fechar o principal
+        register(formData);
+        setSuccessMessage("Cadastro Realizado!");
+        setSuccessColor("pink");
         setShowSuccess(true);
       } else {
         setMessage(data.error);
       }
-    } catch (error) {
-      setMessage("Erro ao conectar com o servidor",error);
+    } catch {
+      setMessage("Erro ao conectar com o servidor");
     }
   };
 
@@ -68,15 +64,12 @@ export default function AuthModal({ isOpen, onClose, setModalType }) {
               <h2 className="text-xl font-bold text-pink-600 mb-4">
                 Cadastro de Usuário
               </h2>
-              <form
-                onSubmit={(e) => handleSubmit(e, "cadastro")}
-                className="flex flex-col gap-3"
-              >
+              <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                 <input
                   type="text"
                   name="nome"
                   placeholder="Nome Completo"
-                  className="border p-2 rounded border-pink-500"
+                  className="border p-2 rounded border-pink-500 focus:ring-pink-700"
                   required
                   onChange={handleChange}
                 />
@@ -144,7 +137,7 @@ export default function AuthModal({ isOpen, onClose, setModalType }) {
                   onClick={() => { setModalType("login"); }}
                   className="text-purple-600 cursor-pointer"
                 >
-                 <a href="/ModalLogin">Fazer Login</a> 
+                 <a href="">Fazer Login</a> 
                 </span>
               </p>
             </>
