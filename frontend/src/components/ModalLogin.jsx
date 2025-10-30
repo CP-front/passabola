@@ -2,7 +2,7 @@ import { useState } from "react";
 import SuccessModal from "./SucessModal";
 import { useAuth } from "../context/AuthContext";
 
-export default function AuthModal({ isOpen, onClose, setModalType }) { // <-- adiciona setModalType
+export default function AuthModal({ isOpen, onClose, setModalType }) {
   const [formData, setFormData] = useState({});
   const [message, setMessage] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
@@ -83,12 +83,14 @@ export default function AuthModal({ isOpen, onClose, setModalType }) { // <-- ad
                 Entrar
               </button>
             </form>
+
             {message && <p className="text-sm mt-2 text-red-500">{message}</p>}
+
             <p className="text-sm mt-3">
               Não tem conta?{" "}
               <span
-                onClick={() => setModalType("cadastro")} // <-- AQUI faz a troca
-                className="text-pink-600 cursor-pointer font-semibold hover:underline"
+                onClick={() => setModalType("register")} // ✅ Troca para o modal de cadastro
+                className="text-pink-600 cursor-pointer hover:underline"
               >
                 Cadastrar-se
               </span>
@@ -102,7 +104,7 @@ export default function AuthModal({ isOpen, onClose, setModalType }) { // <-- ad
         isOpen={showSuccess}
         onClose={() => {
           setShowSuccess(false);
-          onClose();
+          onClose(); // fecha modal principal após fechar o modal de sucesso
         }}
         message={successMessage}
         color={successColor}

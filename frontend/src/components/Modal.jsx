@@ -9,7 +9,7 @@ export default function AuthModal({ isOpen, onClose, setModalType }) {
   const [successMessage, setSuccessMessage] = useState("");
   const [successColor, setSuccessColor] = useState("purple");
 
-const { register } = useAuth();
+  const { register } = useAuth();
 
   if (!isOpen) return null;
 
@@ -60,87 +60,90 @@ const { register } = useAuth();
             ✕
           </button>
 
-            <>
-              <h2 className="text-xl font-bold text-pink-600 mb-4">
-                Cadastro de Usuário
-              </h2>
-              <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-                <input
-                  type="text"
-                  name="nome"
-                  placeholder="Nome Completo"
-                  className="border p-2 rounded border-pink-500 focus:ring-pink-700"
-                  required
-                  onChange={handleChange}
-                />
-                <input
-                  type="text"
-                  name="cpf"
-                  placeholder="CPF"
-                  className="border p-2 rounded border-pink-500"
-                  required
-                  onChange={handleChange}
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="E-mail"
-                  className="border p-2 rounded border-pink-500"
-                  required
-                  onChange={handleChange}
-                />
-                <input
-                  type="cep"
-                  name="cep"
-                  placeholder="CEP"
-                  className="border p-2 rounded border-pink-500"
-                  required
-                  onChange={handleChange}
-                />
-                <input
-                  type="tel"
-                  name="telefone"
-                  placeholder="Telefone"
-                  className="border p-2 rounded border-pink-500"
-                  required
-                  onChange={handleChange}
-                />
-                <input
-                  type="password"
-                  name="senha"
-                  placeholder="Senha"
-                  className="border p-2 rounded border-pink-500"
-                  required
-                  onChange={handleChange}
-                />
-                <input
-                  type="password"
-                  name="confirmarSenha"
-                  placeholder="Confirmar senha"
-                  className="border p-2 rounded border-pink-500"
-                  required
-                  onChange={handleChange}
-                />
+          <>
+            <h2 className="text-xl font-bold text-pink-600 mb-4">
+              Cadastro de Usuário
+            </h2>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+              <input
+                type="text"
+                name="nome"
+                placeholder="Nome Completo"
+                className="border p-2 rounded border-pink-500 focus:ring-pink-700"
+                required
+                onChange={handleChange}
+              />
+              <input
+                type="text"
+                name="cpf"
+                placeholder="CPF"
+                className="border p-2 rounded border-pink-500"
+                required
+                onChange={handleChange}
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="E-mail"
+                className="border p-2 rounded border-pink-500"
+                required
+                onChange={handleChange}
+              />
+              <input
+                type="cep"
+                name="cep"
+                placeholder="CEP"
+                className="border p-2 rounded border-pink-500"
+                required
+                onChange={handleChange}
+              />
+              <input
+                type="tel"
+                name="telefone"
+                placeholder="Telefone"
+                className="border p-2 rounded border-pink-500"
+                required
+                onChange={handleChange}
+              />
+              <input
+                type="password"
+                name="senha"
+                placeholder="Senha"
+                className="border p-2 rounded border-pink-500"
+                required
+                onChange={handleChange}
+              />
+              <input
+                type="password"
+                name="confirmarSenha"
+                placeholder="Confirmar senha"
+                className="border p-2 rounded border-pink-500"
+                required
+                onChange={handleChange}
+              />
 
-                <label className="flex items-center gap-2 text-sm">
-                  <input type="checkbox" required /> Aceito os termos de uso
-                </label>
+              <label className="flex items-center gap-2 text-sm">
+                <input type="checkbox" required /> Aceito os termos de uso
+              </label>
 
-                <button className="bg-pink-500 text-white py-2 rounded hover:bg-pink-400 cursor-pointer">
-                  Cadastrar
-                </button>
-              </form>
-              {message && <p className="text-sm mt-2 text-red-500">{message}</p>}
-              <p className="text-sm mt-3">
-                Já tem conta?{" "}
-                <span
-                  onClick={() => { setModalType("login"); }}
-                  className="text-purple-600 cursor-pointer"
-                >
-                 <a href="">Fazer Login</a> 
-                </span>
-              </p>
-            </>
+              <button className="bg-pink-500 text-white py-2 rounded hover:bg-pink-400 cursor-pointer">
+                Cadastrar
+              </button>
+            </form>
+
+            {message && <p className="text-sm mt-2 text-red-500">{message}</p>}
+
+            {/* 🔁 Aqui está a alteração pedida */}
+            <p className="text-sm mt-3 text-center">
+              Já tem conta?{" "}
+              <span
+                onClick={() => setModalType("login")}
+                className="text-purple-600 cursor-pointer hover:underline"
+              >
+                Fazer Login
+              </span>
+            </p>
+          </>
         </div>
       </div>
 

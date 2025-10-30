@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import passaBola from "../assets/passaBola_3x1fundo.png";
 import { useNavigate } from "react-router-dom";
-import AuthModal from "./Modal";
-import LoginModal from "./ModalLogin";
+import AuthModal from "./Modal";       // Modal de cadastro
+import LoginModal from "./ModalLogin"; // Modal de login
 import { useAuth } from "../context/AuthContext";
 
-const Nav = () => {  
+const Nav = () => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
 
@@ -28,13 +28,22 @@ const Nav = () => {
 
         {/* Links */}
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#funcionalidades" className="font-semibold text-[#8b5cf6] hover:text-[#000000] transition-colors cursor-pointer">
+          <a
+            href="#funcionalidades"
+            className="font-semibold text-[#8b5cf6] hover:text-[#000000] transition-colors cursor-pointer"
+          >
             Funcionalidades
           </a>
-          <a href="#beneficios" className="font-semibold text-[#8b5cf6] hover:text-[#000000] transition-colors cursor-pointer">
+          <a
+            href="#beneficios"
+            className="font-semibold text-[#8b5cf6] hover:text-[#000000] transition-colors cursor-pointer"
+          >
             Benefícios
           </a>
-          <a href="#footer" className="font-semibold text-[#8b5cf6] hover:text-[#000000] transition-colors cursor-pointer">
+          <a
+            href="#footer"
+            className="font-semibold text-[#8b5cf6] hover:text-[#000000] transition-colors cursor-pointer"
+          >
             Contato
           </a>
         </nav>
@@ -44,13 +53,20 @@ const Nav = () => {
           {!user ? (
             <>
               <button
-                onClick={() => { setModalType("login"); setAuthModalOpen(true); }}
+                onClick={() => {
+                  setModalType("login");
+                  setAuthModalOpen(true);
+                }}
                 className="px-4 py-1 border border-purple-600 rounded-md text-purple-600 hover:bg-[#4C1D8F] hover:text-white transition cursor-pointer"
               >
                 Entrar
               </button>
+
               <button
-                onClick={() => { setModalType("register"); setAuthModalOpen(true); }}
+                onClick={() => {
+                  setModalType("register");
+                  setAuthModalOpen(true);
+                }}
                 className="px-4 py-1 rounded-md text-white bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-80 transition cursor-pointer"
               >
                 Cadastrar
@@ -72,7 +88,7 @@ const Nav = () => {
         </div>
       </nav>
 
-      {/* Modal */}
+      {/* Modal de Cadastro */}
       {modalType === "register" && (
         <AuthModal
           isOpen={authModalOpen}
@@ -81,14 +97,16 @@ const Nav = () => {
         />
       )}
 
+      {/* Modal de Login */}
       {modalType === "login" && (
         <LoginModal
           isOpen={authModalOpen}
           onClose={() => setAuthModalOpen(false)}
+          setModalType={setModalType} // ✅ necessário para "Cadastrar-se" funcionar
         />
       )}
     </>
   );
-}
+};
 
 export default Nav;
