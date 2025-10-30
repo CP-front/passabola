@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "id": "1761829774259",
+    "nome": "Mané",
+    "cpf": "12345678910",
+    "email": "mane@email",
+    "cep": "123",
+    "telefone": "11999999999",
+    "senha": "$2b$10$EfRUx2Ybjxf1cV2vfZGxJeKIrYY63p.z4dUh7M8Nb0gzyANlrmGsO"
+  }
+]

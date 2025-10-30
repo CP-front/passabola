@@ -4,7 +4,7 @@ import passaBola from "../assets/passaBola_3x1fundo.png";
 import { useNavigate } from "react-router-dom";
 import AuthModal from "./Modal";
 import LoginModal from "./ModalLogin";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../components/AuthContext";
 
 const Nav = () => {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SuccessModal from "./SucessModal";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../components/AuthContext";
 
 export default function AuthModal({ isOpen, onClose}) {
   const [formData, setFormData] = useState({});
@@ -9,6 +9,7 @@ export default function AuthModal({ isOpen, onClose}) {
   const [successMessage, setSuccessMessage] = useState("");
   const [successColor, setSuccessColor] = useState("purple");
 
+  // A função 'login' agora é a versão "burra" do context
   const { login } = useAuth();
 
   if (!isOpen) return null;
@@ -31,12 +32,26 @@ export default function AuthModal({ isOpen, onClose}) {
       const data = await response.json();
 
       if (response.ok) {
-        login(data.user || formData);
-        setSuccessMessage("Login Realizado!");
-        setSuccessColor("purple");
-        setShowSuccess(true);
+        
+        // --- A GRANDE MUDANÇA ESTÁ AQUI ---
+        // 1. Verificamos se a API enviou o token e o usuário
+        if (data.user && data.token) {
+          
+          // 2. Passamos o usuário E O TOKEN para o contexto
+          // O contexto vai salvar o token e atualizar o estado global 'user'
+          login(data.user, data.token); 
+
+          // 3. Mostramos o modal de sucesso
+          setSuccessMessage("Login Realizado!");
+          setSuccessColor("purple");
+          setShowSuccess(true);
+        } else {
+          // A API funcionou (response.ok) mas não enviou os dados esperados
+          setMessage("Resposta do servidor inválida. Faltando usuário ou token.");
+        }
+
       } else {
-        setMessage(data.error);
+        setMessage(data.error || "Email ou senha incorretos");
       }
     } catch {
       setMessage("Erro ao conectar com o servidor");
@@ -45,68 +60,66 @@ export default function AuthModal({ isOpen, onClose}) {
 
   return (
     <>
-        {/* Modal login */}
-        <div className="fixed inset-0 flex items-center justify-center z-40">
-            <div
+      {/* Modal login */}
+      <div className="fixed inset-0 flex items-center justify-center z-40">
+          <div
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={onClose}
-            ></div>
+          ></div>
 
-            <div className="relative bg-white rounded-lg shadow-lg w-[400px] p-6 z-10">
+          <div className="relative bg-white rounded-lg shadow-lg w-[400px] p-6 z-10">
             <button
-                onClick={onClose}
-                className="absolute top-2 right-2 text-gray-600 hover:text-black cursor-pointer"
+              onClick={onClose}
+              className="absolute top-2 right-2 text-gray-600 hover:text-black cursor-pointer"
             >
-                ✕
+              ✕
             </button>
-
-                <>
-                <h2 className="text-xl font-bold text-purple-600 mb-4">Login</h2>
-                <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-                    <input
+            
+            {/* ... (o resto do seu JSX do formulário, não precisa mudar) ... */}
+            <>
+              <h2 className="text-xl font-bold text-purple-600 mb-4">Login</h2>
+              <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+                  <input
                     type="email"
                     name="email"
                     placeholder="E-mail"
                     className="border p-2 rounded border-purple-500"
                     required
                     onChange={handleChange}
-                    />
-                    <input
+                  />
+                  <input
                     type="password"
-                    name="senha"
+                    name="senha" // Garanta que seu backend espera 'senha' e não 'password'
                     placeholder="Senha"
                     className="border p-2 rounded border-purple-500"
                     required
                     onChange={handleChange}
-                    />
-                    <button className="bg-purple-600 text-white py-2 rounded hover:bg-purple-800 cursor-pointer">
+                  />
+                  <button className="bg-purple-600 text-white py-2 rounded hover:bg-purple-800 cursor-pointer">
                     Entrar
-                    </button>
-                </form>
-                {message && <p className="text-sm mt-2 text-red-500">{message}</p>}
-                <p className="text-sm mt-3">
-                    Não tem conta?{" "}
-                    <span
-                    
-                    className="text-pink-600 cursor-pointer"
-                    >
+                  </button>
+              </form>
+              {message && <p className="text-sm mt-2 text-red-500">{message}</p>}
+              <p className="text-sm mt-3">
+                  Não tem conta?{" "}
+                  <span className="text-pink-600 cursor-pointer">
                     <a href="">Cadastrar-se</a>
-                    </span>
-                </p>
-                </>
-            </div>
-        </div>
+                  </span>
+              </p>
+            </>
+          </div>
+      </div>
 
-        {/* Modal de sucesso */}
-        <SuccessModal
-            isOpen={showSuccess}
-            onClose={() => {
-            setShowSuccess(false);
-            onClose(); // fecha modal principal após fechar o modal de sucesso
-            }}
-            message={successMessage}
-            color={successColor}
-        />
+      {/* Modal de sucesso */}
+      <SuccessModal
+        isOpen={showSuccess}
+        onClose={() => {
+          setShowSuccess(false);
+          onClose(); // fecha modal principal após fechar o modal de sucesso
+        }}
+        message={successMessage}
+        color={successColor}
+      />
     </>
     );
   }
