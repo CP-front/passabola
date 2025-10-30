@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
-// Ícone roxo personalizado
+// Ícone roxo - ping
 const purpleIcon = new L.Icon({
   iconUrl:
     "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png",
@@ -15,22 +15,28 @@ const purpleIcon = new L.Icon({
 });
 
 export default function Mapa() {
-    //cordenada do ping
-  const garden = [-23.473805, -46.596669]; 
+  // Coordenadas do ping
+  const garden = [-23.473805, -46.596669];
 
   return (
-    <div style={{ height: "100vh", width: "100%" }}>
-      <MapContainer center={garden} zoom={14} scrollWheelZoom={true} style={{ height: "100%", width: "100%" }}>
+    <div className="relative h-screen w-full z-0">
+      <MapContainer
+        center={garden}
+        zoom={14}
+        scrollWheelZoom={true}
+        className="h-full w-full z-0"
+      >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+
         <Marker position={garden} icon={purpleIcon}>
-        <Popup>
+          <Popup>
             <div className="bg-purple-100 text-purple-800 font-bold rounded-lg px-3 py-2 text-center text-lg font-sans">
-            Garden Ball
+              Garden Ball
             </div>
-        </Popup>
+          </Popup>
         </Marker>
       </MapContainer>
     </div>
