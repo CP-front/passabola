@@ -8,6 +8,7 @@ import { AiOutlineThunderbolt } from "react-icons/ai";
 import { FiShield } from "react-icons/fi";
 import { CiHeart } from "react-icons/ci";
 import { HiOutlineSparkles } from "react-icons/hi2";
+import { FaMapMarkedAlt } from "react-icons/fa";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -39,6 +40,9 @@ const Home = () => {
           </button>
           <button onClick={() => navigate("/jogos")} className="px-6 py-3 rounded-md font-medium border border-purple-600 text-purple-700 hover:bg-purple-50 transition transform hover:scale-105 hover:shadow-lg flex items-center space-x-2 cursor-pointer">
             <span>Últimos jogos - Seleção</span>
+          </button>
+          <button onClick={() => navigate("/mapa")} className="flex items-center gap-2 px-6 py-3 rounded-md font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 shadow hover:opacity-90 transition transform hover:scale-105 hover:shadow-lg cursor-pointer">
+              <FaMapMarkedAlt className="" size={24} />Mapa Campos
           </button>
         </div>
 
