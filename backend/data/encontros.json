@@ -2,31 +2,36 @@
     {
         "id": 1,
         "local": "Playball Pompeia",
+        "cidade": "São Paulo",
         "data": "09/06/2025",
         "vagasRestantes": 14
     },
     {
         "id": 2,
         "local": "Playball Pompeia",
+        "cidade": "São Paulo",
         "data": "12/06/2025",
         "vagasRestantes": 14
     },
     {
         "id": 3,
         "local": "Arena Berrini",
+        "cidade": "São Paulo",
         "data": "15/06/2025",
         "vagasRestantes": 14
     },
     {
         "id": 4,
         "local": "Play SP",
+        "cidade": "São Paulo",
         "data": "20/06/2025",
         "vagasRestantes": 14
     },
     {
         "id": 5,
         "local": "GardenBosta",
-        "data": "21/06/2025",
+        "cidade": "São Paulo",
+        "data": "31/10/2025",
         "vagasRestantes": 14
     }
 ]
