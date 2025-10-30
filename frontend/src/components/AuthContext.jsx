@@ -1,128 +1,81 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+// src/context/ContextoAuth.jsx
+// (ou AuthContext.jsx, use o nome do seu arquivo)
 
-// Importe seu componente ModalLogin
-// O caminho pode ser diferente no seu projeto.
-import ModalLogin from '../components/ModalLogin'; 
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 
-// 1. Criar o Contexto
+// --- 1. IMPORTAR O SEU MODAL DE LOGIN ---
+// (Ajuste o caminho se o seu AuthModal.jsx estiver em outro lugar)
+import AuthModal from "../components/ModalLogin";
+
 const AuthContext = createContext();
 
-// 2. Criar o Provedor (Provider)
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // Armazena dados do usuário (null = deslogado)
-  const [loading, setLoading] = useState(true); // Para checar o login inicial
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [user, setUser] = useState(null);
 
-  // Efeito para checar se o usuário já está logado (ex: por um token no localStorage)
-  // Isso impede que o usuário seja deslogado ao recarregar a página
+  // --- 2. ADICIONAR ESTADO PARA CONTROLAR O MODAL ---
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false); // Carrega usuário do localStorage ao iniciar
+
   useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        // Tente buscar o token do localStorage
-        const token = localStorage.getItem('authToken');
-        if (token) {
-          // **API REAL (Exemplo):**
-          // const response = await fetch('/api/v1/auth/me', {
-          //   headers: { 'Authorization': `Bearer ${token}` }
-          // });
-          // const userData = await response.json();
-          // if (response.ok) {
-          //   setUser(userData);
-          // } else {
-          //   localStorage.removeItem('authToken');
-          // }
-
-          // **SIMULAÇÃO (para este exemplo):**
-          // Vamos fingir que o token é válido e buscamos o usuário
-          const mockUser = { id: 1, name: "Usuário Exemplo", email: "user@passabola.com" };
-          setUser(mockUser);
-        }
-      } catch (error) {
-        console.error("Falha ao checar autenticação", error);
-        localStorage.removeItem('authToken');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    checkAuth();
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) setUser(JSON.parse(savedUser));
   }, []);
 
-  // --- Funções do Modal ---
-  const openLoginModal = () => setIsLoginModalOpen(true);
-  const closeLoginModal = () => setIsLoginModalOpen(false);
+  // --- 3. ADICIONAR FUNÇÕES PARA O MODAL (com useCallback) ---
+  const openLoginModal = useCallback(() => setIsLoginModalOpen(true), []);
+  const closeLoginModal = useCallback(() => setIsLoginModalOpen(false), []); // Faz login (salva usuário no estado e localStorage)
 
-  // --- Funções de Autenticação ---
+  const login = (userData) => {
+    setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
+    console.log(`[Auth] Login realizado por: ${userData.nome}`);
 
-  // Função de Login (Simulada)
-  const login = async (email, password) => {
-    try {
-      // **API REAL (Exemplo):**
-      // const response = await fetch('/api/v1/auth/login', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ email, password })
-      // });
-      // const data = await response.json();
-      // if (!response.ok) throw new Error(data.message);
-      // setUser(data.user);
-      // localStorage.setItem('authToken', data.token);
+    // --- 4. FECHAR O MODAL APÓS O LOGIN ---
+    closeLoginModal();
+  }; // Faz logout (limpa estado e localStorage)
 
-      // **SIMULAÇÃO (para este exemplo):**
-      console.log("Simulando login com:", email, password);
-      await new Promise(resolve => setTimeout(resolve, 500)); // Simula delay da API
-      const mockUser = { id: 1, name: "Usuário Logado", email: email };
-      setUser(mockUser);
-      localStorage.setItem('authToken', 'meu-token-falso'); // Simula token
-      
-      closeLoginModal(); // Fecha o modal ao logar
-      return true;
-
-    } catch (error) {
-      console.error("Falha no login:", error);
-      return false;
-    }
-  };
-
-  // Função de Logout (Simulada)
   const logout = () => {
+    console.log(`[Auth] Usuário desconectado: ${user?.nome}`);
     setUser(null);
-    localStorage.removeItem('authToken');
-    // Você pode querer navegar o usuário para a home aqui
+    localStorage.removeItem("user");
+  }; // Registra novo usuário
+
+  const register = (userData) => {
+    console.log(
+      `[Auth] Novo usuário registrado: ${userData.nome} (${userData.email})`
+    );
+    login(userData); // A função login() já salva e fecha o modal
   };
 
-  // 3. Montar o valor que será fornecido
+  // --- 5. ATUALIZAR O 'VALUE' FORNECIDO PELO CONTEXTO ---
   const value = {
     user,
-    isAuthenticated: !!user, // Converte 'user' em um booleano (true se logado, false se null)
-    loading,
     login,
     logout,
-    openLoginModal,
-    closeLoginModal
+    register,
+    isAuthenticated: !!user, // <-- O que faltava para Home.jsx
+    openLoginModal, // <-- O que faltava para Home.jsx
+    closeLoginModal, // <-- Para o próprio modal usar
   };
 
-  // 4. Retornar o Provedor
   return (
+    // Use o 'value' que criamos
     <AuthContext.Provider value={value}>
-      {/* Não renderiza o app até a checagem inicial de auth terminar */}
-      {!loading && children}
-      
-      {/* O Modal "vive" aqui, globalmente, e é controlado pelo estado do provider */}
-      <ModalLogin 
-        isOpen={isLoginModalOpen} 
-        onClose={closeLoginModal} 
-      />
+              {children}
+      {/* --- 6. RENDERIZAR O MODAL AQUI --- */}
+      {/* O Modal agora "vive" aqui. 
+        O AuthProvider controla quando ele está aberto (isOpen)
+        e o que acontece quando ele pede para fechar (onClose).
+      */}
+      <AuthModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />   {" "}
     </AuthContext.Provider>
   );
 };
 
-// 5. Criar e exportar o Hook customizado
 // eslint-disable-next-line react-refresh/only-export-components
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth deve ser usado dentro de um AuthProvider');
-  }
-  return context;
-};
+export const useAuth = () => useContext(AuthContext);

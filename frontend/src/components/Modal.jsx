@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SuccessModal from "./SucessModal";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../components/AuthContext";
 
 export default function AuthModal({ isOpen, onClose, setModalType }) {
   const [formData, setFormData] = useState({});

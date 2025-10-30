@@ -18,6 +18,8 @@ const Home = () => {
   // --- 2. PEGAR O ESTADO DE AUTENTICAÇÃO E A FUNÇÃO DO MODAL ---
   const { isAuthenticated, openLoginModal } = useAuth();
 
+  console.log('ESTADO DE AUTH NA HOME:', { isAuthenticated });
+
   // --- 3. CRIAR A FUNÇÃO DE CLIQUE CONDICIONAL ---
   const handleParticiparClick = () => {
     if (isAuthenticated) {
