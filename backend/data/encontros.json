@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "local": "Playball Pompeia",
+        "data": "09/06/2025",
+        "vagasRestantes": 14
+    },
+    {
+        "id": 2,
+        "local": "Playball Pompeia",
+        "data": "12/06/2025",
+        "vagasRestantes": 14
+    },
+    {
+        "id": 3,
+        "local": "Arena Berrini",
+        "data": "15/06/2025",
+        "vagasRestantes": 14
+    },
+    {
+        "id": 4,
+        "local": "Play SP",
+        "data": "20/06/2025",
+        "vagasRestantes": 14
+    },
+    {
+        "id": 5,
+        "local": "GardenBosta",
+        "data": "21/06/2025",
+        "vagasRestantes": 14
+    }
+]
