@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { CiCalendar } from "react-icons/ci";
 import { RiUserAddLine } from "react-icons/ri";
 import { LuMapPinned } from "react-icons/lu";
@@ -28,6 +29,7 @@ const Home = () => {
     } else {
       // Se NÃO está logado, chama a função para abrir o modal de login
       openLoginModal();
+
     }
   };
   
@@ -335,7 +337,6 @@ const Home = () => {
             </div>
           </div>
 
-          {/* --- 5. APLICAR A NOVA FUNÇÃO onClick AQUI TAMBÉM --- */}
           <button 
             onClick={handleParticiparClick} 
             className="mt-8 px-6 py-3 rounded-lg text-white font-medium bg-gradient-to-r from-pink-500 to-purple-500 shadow hover:opacity-90 transition transform hover:scale-105 hover:shadow-lg cursor-pointer"

@@ -1,10 +1,9 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
-// --- 1. IMPORTE O AUTHPROVIDER ---
-// (Ajuste o caminho se o seu AuthContext.jsx não estiver na pasta 'context')
+// --- IMPORTE O AUTHPROVIDER ---
 import { AuthProvider } from './components/AuthContext'
 
-// (Seus imports de rotas)
+// (Imports de rotas)
 import Error from './routes/Error'
 import Nav from './components/Nav'
 import Footer from './components/Footer'

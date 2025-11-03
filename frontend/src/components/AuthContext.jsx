@@ -1,81 +1,113 @@
-// src/context/ContextoAuth.jsx
-// (ou AuthContext.jsx, use o nome do seu arquivo)
-
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  useCallback,
-} from "react";
-
-// --- 1. IMPORTAR O SEU MODAL DE LOGIN ---
-// (Ajuste o caminho se o seu AuthModal.jsx estiver em outro lugar)
-import AuthModal from "../components/ModalLogin";
+import { createContext, useContext, useState, useEffect } from "react";
+import ModalLogin from "./ModalLogin";
+import RegisterModal from "./Modal";
+import SuccessModal from "./SucessModal";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [modalType, setModalType] = useState("login"); // login | register
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // --- 2. ADICIONAR ESTADO PARA CONTROLAR O MODAL ---
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false); // Carrega usuário do localStorage ao iniciar
+  // Modais de sucesso globais
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [successColor, setSuccessColor] = useState("purple");
 
+  // Carregar usuário salvo
   useEffect(() => {
     const savedUser = localStorage.getItem("user");
-    if (savedUser) setUser(JSON.parse(savedUser));
+    if (savedUser) {
+      const parsedUser = JSON.parse(savedUser);
+      setUser(parsedUser);
+      setIsAuthenticated(true);
+    }
   }, []);
 
-  // --- 3. ADICIONAR FUNÇÕES PARA O MODAL (com useCallback) ---
-  const openLoginModal = useCallback(() => setIsLoginModalOpen(true), []);
-  const closeLoginModal = useCallback(() => setIsLoginModalOpen(false), []); // Faz login (salva usuário no estado e localStorage)
-
+  // LOGIN
   const login = (userData) => {
     setUser(userData);
     localStorage.setItem("user", JSON.stringify(userData));
-    console.log(`[Auth] Login realizado por: ${userData.nome}`);
-
-    // --- 4. FECHAR O MODAL APÓS O LOGIN ---
-    closeLoginModal();
-  }; // Faz logout (limpa estado e localStorage)
-
-  const logout = () => {
-    console.log(`[Auth] Usuário desconectado: ${user?.nome}`);
-    setUser(null);
-    localStorage.removeItem("user");
-  }; // Registra novo usuário
-
-  const register = (userData) => {
-    console.log(
-      `[Auth] Novo usuário registrado: ${userData.nome} (${userData.email})`
-    );
-    login(userData); // A função login() já salva e fecha o modal
+    setIsAuthenticated(true);
+    setSuccessMessage("Login realizado com sucesso!");
+    setSuccessColor("purple");
+    setShowSuccess(true);
+    setIsModalOpen(false);
   };
 
-  // --- 5. ATUALIZAR O 'VALUE' FORNECIDO PELO CONTEXTO ---
-  const value = {
-    user,
-    login,
-    logout,
-    register,
-    isAuthenticated: !!user, // <-- O que faltava para Home.jsx
-    openLoginModal, // <-- O que faltava para Home.jsx
-    closeLoginModal, // <-- Para o próprio modal usar
+  // LOGOUT
+  const logout = () => {
+    setUser(null);
+    localStorage.removeItem("user");
+    setIsAuthenticated(false);
+  };
+
+  // CADASTRO
+  const register = (userData) => {
+    setUser(null);
+    localStorage.setItem("user", JSON.stringify(userData));
+    setSuccessMessage("Cadastro realizado! Faça login para continuar.");
+    setSuccessColor("pink");
+    setShowSuccess(true);
+    setIsModalOpen(false);
+  };
+
+  // Abrir modais
+  const openLoginModal = () => {
+    setModalType("login");
+    setIsModalOpen(true);
+  };
+
+  const openRegisterModal = () => {
+    setModalType("register");
+    setIsModalOpen(true);
+  };
+
+  // Fechar modal genérico
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
-    // Use o 'value' que criamos
-    <AuthContext.Provider value={value}>
-              {children}
-      {/* --- 6. RENDERIZAR O MODAL AQUI --- */}
-      {/* O Modal agora "vive" aqui. 
-        O AuthProvider controla quando ele está aberto (isOpen)
-        e o que acontece quando ele pede para fechar (onClose).
-      */}
-      <AuthModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />   {" "}
+    <AuthContext.Provider
+      value={{
+        user,
+        isAuthenticated,
+        login,
+        logout,
+        register,
+        openLoginModal,
+        openRegisterModal,
+      }}
+    >
+      {children}
+
+      {/* Modal de Login / Cadastro */}
+      {modalType === "login" ? (
+        <ModalLogin
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          setModalType={setModalType}
+        />
+      ) : (
+        <RegisterModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          setModalType={setModalType}
+        />
+      )}
+
+      {/* Modal de sucesso global */}
+      <SuccessModal
+        isOpen={showSuccess}
+        onClose={() => setShowSuccess(false)}
+        message={successMessage}
+        color={successColor}
+      />
     </AuthContext.Provider>
   );
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => useContext(AuthContext);
