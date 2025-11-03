@@ -1,9 +1,9 @@
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-// --- IMPORTE O AUTHPROVIDER ---
-import { AuthProvider } from './components/AuthContext'
+// Importa o AuthProvider
+import { AuthProvider } from './components/AuthContext' // Verifique o caminho para seu context
 
-// (Imports de rotas)
+// Imports das Rotas
 import Error from './routes/Error'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
@@ -19,38 +19,35 @@ import Mapa from './routes/Mapa'
 function App() {
   return (
     <BrowserRouter>
-      {/* --- 2. ENVOLVA TODA A APLICAÇÃO COM O AUTHPROVIDER --- */}
+      {/* AuthProvider envolve toda a aplicação */}
       <AuthProvider>
-      
         {/* Navbar fixa no topo */}
-        {/* Agora o <Nav /> também pode usar o useAuth() (ex: para mostrar "Login" ou "Logout") */}
         <Nav />
 
         {/* Conteúdo principal (as páginas) */}
         <div className="min-h-screen bg-[#f2f2f2]">
           <Routes>
-            {/* O <Home /> agora está "dentro" do AuthProvider e funcionará */}
             <Route path="/" element={<Home />} />
             <Route path='/jogos' element={<Jogos />} />
             <Route path="/explorar" element={<Explorar />} />
             <Route path="/explorar/encontros" element={<Encontros />} />
-            <Route path="/explorar/encontros/time" element={<Time />} />
-            <Route path="/explorar/encontros/time/posicao" element={<Posicao />} />
-            <Route path="/explorar/encontros/time/posicaoRosa" element={<PosicaoRosa />} />
-            <Route path='/mapa'element={<Mapa/>}/>
+
+            {/* --- ROTAS MODIFICADAS --- */}
+            {/* Adicionamos :jogoId para que a rota saiba qual jogo carregar */}
+            <Route path="/explorar/encontros/time/:jogoId" element={<Time />} />
+            <Route path="/explorar/encontros/time/posicao/:jogoId" element={<Posicao />} />
+            <Route path="/explorar/encontros/time/posicaoRosa/:jogoId" element={<PosicaoRosa />} />
+
+            <Route path='/mapa' element={<Mapa />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </div>
 
         {/* Footer fixo no final */}
-        {/* O <Footer /> também pode usar o useAuth() */}
         <Footer />
-        
       </AuthProvider>
-      {/* --- FIM DO AUTHPROVIDER --- */}
     </BrowserRouter>
   );
 }
-
 
 export default App
