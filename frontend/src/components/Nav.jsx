@@ -34,13 +34,13 @@ const Nav = () => {
           <>
             <button
               onClick={openLoginModal}
-              className="px-4 py-1 border border-purple-600 rounded-md text-purple-600 hover:bg-[#4C1D8F] hover:text-white transition"
+              className="px-4 py-1 border border-purple-600 rounded-md text-purple-600 hover:bg-[#4C1D8F] hover:text-white transition cursor-pointer"
             >
               Entrar
             </button>
             <button
               onClick={openRegisterModal}
-              className="px-4 py-1 rounded-md text-white bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-80 transition"
+              className="px-4 py-1 rounded-md text-white bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-80 transition cursor-pointer"
             >
               Cadastrar
             </button>
@@ -52,7 +52,7 @@ const Nav = () => {
             </span>
             <button
               onClick={logout}
-              className="px-3 py-1 border border-pink-500 text-pink-500 rounded hover:bg-pink-500 hover:text-white transition"
+              className="px-3 py-1 border border-pink-500 text-pink-500 rounded hover:bg-pink-500 hover:text-white transition cursor-pointer"
             >
               Sair
             </button>

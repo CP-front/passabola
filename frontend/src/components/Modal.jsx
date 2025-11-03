@@ -45,7 +45,7 @@ export default function RegisterModal({ isOpen, onClose, setModalType }) {
       <div className="relative bg-white rounded-lg shadow-lg w-[400px] p-6 z-10">
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-gray-600 hover:text-black"
+          className="absolute top-2 right-2 text-gray-600 hover:text-black cursor-pointer"
         >
           ✕
         </button>
@@ -73,7 +73,7 @@ export default function RegisterModal({ isOpen, onClose, setModalType }) {
             <input type="checkbox" required /> Aceito os termos de uso
           </label>
 
-          <button className="bg-pink-500 text-white py-2 rounded hover:bg-pink-400">
+          <button className="bg-pink-500 text-white py-2 rounded hover:bg-pink-400 cursor-pointer">
             Cadastrar
           </button>
         </form>

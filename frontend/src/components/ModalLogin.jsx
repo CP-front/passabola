@@ -45,7 +45,7 @@ export default function ModalLogin({ isOpen, onClose, setModalType }) {
       <div className="relative bg-white rounded-lg shadow-lg w-[400px] p-6 z-10">
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-gray-600 hover:text-black"
+          className="absolute top-2 right-2 text-gray-600 hover:text-black cursor-pointer"
         >
           ✕
         </button>
@@ -69,7 +69,7 @@ export default function ModalLogin({ isOpen, onClose, setModalType }) {
             required
             onChange={handleChange}
           />
-          <button className="bg-purple-600 text-white py-2 rounded hover:bg-purple-800">
+          <button className="bg-purple-600 text-white py-2 rounded hover:bg-purple-800 cursor-pointer">
             Entrar
           </button>
         </form>
