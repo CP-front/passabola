@@ -5,6 +5,10 @@ import { useAuth } from "../components/AuthContext";
 const Nav = () => {
   const navigate = useNavigate();
   const { user, logout, openLoginModal, openRegisterModal } = useAuth();
+  const handleLogout = () => {
+    logout(); // Realiza o logout
+    navigate("/"); // Navega para a página principal
+  };
 
   return (
     <nav className="flex items-center justify-between px-6 py-3 bg-white shadow-sm">
@@ -51,7 +55,7 @@ const Nav = () => {
               Olá, {user.nome.split(" ")[0]} 👋
             </span>
             <button
-              onClick={logout}
+              onClick={handleLogout}
               className="px-3 py-1 border border-pink-500 text-pink-500 rounded hover:bg-pink-500 hover:text-white transition cursor-pointer"
             >
               Sair
