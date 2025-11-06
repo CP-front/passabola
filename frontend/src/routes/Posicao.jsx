@@ -2,10 +2,11 @@
 
 import { useState } from "react"
 import { ArrowLeft, Check, Plus } from "lucide-react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 export default function Posicao() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const { jogoId } = useParams();
 
   const [positions, setPositions] = useState([
     { id: "goleiro", name: "Goleira", player: "Disponível", available: true },
@@ -105,7 +106,7 @@ export default function Posicao() {
       <div>
         <div className="flex flex-col sm:flex-row sm:items-center gap-3 font-bold">
           <button
-            onClick={() => navigate("/explorar/encontros/time")}
+            onClick={() => navigate(`/explorar/encontros/time/${jogoId}`)}
             className="flex items-center gap-2 px-4 py-2 border-2 cursor-pointer rounded-md text-sm text-purple-600 border-purple-600 hover:bg-purple-100 font-bold"
           >
             <ArrowLeft className="w-4 h-4" />

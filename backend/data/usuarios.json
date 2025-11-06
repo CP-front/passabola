@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "id": "1762403166916",
+    "nome": "receba",
+    "cpf": "123",
+    "email": "eu@gmail.com",
+    "cep": "123",
+    "telefone": "123",
+    "senha": "$2b$10$B/Fda81/dsriiQ09BDsFUexrARsEdf7uykpTqAOpu.ekWRkXXW2Sy"
+  }
+]
