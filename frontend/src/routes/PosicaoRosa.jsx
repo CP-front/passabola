@@ -1,13 +1,18 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ArrowLeft, Check, Plus } from "lucide-react"
 import { useNavigate, useParams } from "react-router-dom"
+import { useAuth } from "../components/AuthContext"
 
 export default function Posicao() {
-  const navigate = useNavigate();
-  const { jogoId } = useParams();
+  const navigate = useNavigate()
+  const { user } = useAuth()
+  const { jogoId } = useParams()
 
+  const player_name = user?.nome?.split(" ")[0] || "Jogadora"
+
+  // Estado inicial
   const [positions, setPositions] = useState([
     { id: "goleiro", name: "Goleira", player: "Disponível", available: true },
     { id: "defensora1", name: "Defensora", player: "Disponível", available: true },
@@ -35,70 +40,131 @@ export default function Posicao() {
     { id: "reserva2", filled: false },
   ])
 
-  // modal seleção de posição
   const [selectedPosition, setSelectedPosition] = useState(null)
-
-  // modal de sucesso
   const [showSuccess, setShowSuccess] = useState(false)
-
-  // modal de erro (nenhuma posição selecionada)
   const [showNoSelection, setShowNoSelection] = useState(false)
 
+  // ✅ Carrega a inscrição salva no localStorage
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("inscricoes")) || {}
+    const inscricaoJogo = stored[jogoId]
+
+    if (inscricaoJogo && inscricaoJogo.nome === player_name && inscricaoJogo.time === "rosa") {
+      const posId = inscricaoJogo.posicaoId
+
+      // Marca no estado atual
+      setPositions((prev) =>
+        prev.map((pos) =>
+          pos.id === posId
+            ? { ...pos, available: false, player: `${player_name} inscrita` }
+            : pos
+        )
+      )
+
+      setFieldPositions((prev) =>
+        prev.map((p) => (p.id === posId ? { ...p, filled: true } : p))
+      )
+
+      setReserveBench((prev) =>
+        prev.map((r) => (r.id === posId ? { ...r, filled: true } : r))
+      )
+    }
+  }, [jogoId, player_name])
+
+  // Abre modal
   const openModal = (id) => {
     const pos = positions.find((p) => p.id === id)
-
-    // só abre se a posição estiver livre
-    const alreadyFilled =
-      fieldPositions.find((p) => p.id === id)?.filled ||
-      reserveBench.find((r) => r.id === id)?.filled
-
-    if (alreadyFilled) return
-
     setSelectedPosition(pos)
   }
 
-  const closeModal = () => {
-    setSelectedPosition(null)
-  }
+  const closeModal = () => setSelectedPosition(null)
 
+  // ✅ Confirma posição — substitui se já tiver outra
   const confirmPosition = () => {
-    if (!selectedPosition) return
+  if (!selectedPosition) return
 
-    setPositions((prev) =>
-      prev.map((pos) =>
-        pos.id === selectedPosition.id
-          ? { ...pos, available: false, player: "Jogadora inscrita" }
-          : pos
-      )
-    )
+  // Busca todas as inscrições
+  const stored = JSON.parse(localStorage.getItem("inscricoes")) || {}
+  const inscricaoJogo = stored[jogoId]
 
-    setFieldPositions((prev) =>
-      prev.map((pos) =>
-        pos.id === selectedPosition.id ? { ...pos, filled: true } : pos
-      )
-    )
-
-    setReserveBench((prev) =>
-      prev.map((pos) =>
-        pos.id === selectedPosition.id ? { ...pos, filled: true } : pos
-      )
-    )
-
-    closeModal()
+  // ❌ Se já estava inscrita em outro time, remove
+  if (inscricaoJogo && inscricaoJogo.nome === player_name && inscricaoJogo.time !== "rosa") {
+    delete stored[jogoId]
   }
+
+  // Limpa inscrições anteriores do mesmo time
+  setPositions((prev) =>
+    prev.map((pos) =>
+      pos.player.includes(player_name)
+        ? { ...pos, available: true, player: "Disponível" }
+        : pos
+    )
+  )
+
+  setFieldPositions((prev) =>
+    prev.map((p) =>
+      p.filled && positions.find((pos) => pos.id === p.id)?.player.includes(player_name)
+        ? { ...p, filled: false }
+        : p
+    )
+  )
+
+  setReserveBench((prev) =>
+    prev.map((r) =>
+      r.filled && positions.find((pos) => pos.id === r.id)?.player.includes(player_name)
+        ? { ...r, filled: false }
+        : r
+    )
+  )
+
+  // Atualiza nova posição localmente
+  setPositions((prev) =>
+    prev.map((pos) =>
+      pos.id === selectedPosition.id
+        ? { ...pos, available: false, player: `${player_name} inscrita` }
+        : pos
+    )
+  )
+
+  setFieldPositions((prev) =>
+    prev.map((p) => (p.id === selectedPosition.id ? { ...p, filled: true } : p))
+  )
+
+  setReserveBench((prev) =>
+    prev.map((r) => (r.id === selectedPosition.id ? { ...r, filled: true } : r))
+  )
+
+  // ⚠️ NÃO salva ainda — só depois de clicar em “Confirmar Inscrição”
+  localStorage.setItem(
+    "inscricao_temp",
+    JSON.stringify({ jogoId, nome: player_name, posicaoId: selectedPosition.id, time: "rosa" })
+  )
+
+  closeModal()
+}
 
   const handleConfirmInscricao = () => {
-    // verifica se alguma posição já foi preenchida
-    const algumaOcupada =
-      fieldPositions.some((p) => p.filled) ||
-      reserveBench.some((r) => r.filled)
-
-    if (algumaOcupada) {
-      setShowSuccess(true)
-    } else {
-      setShowNoSelection(true)
-    }
+  const temp = JSON.parse(localStorage.getItem("inscricao_temp"))
+  if (!temp || temp.nome !== player_name || temp.jogoId !== jogoId || temp.time !== "rosa") {
+    setShowNoSelection(true)
+    return
   }
+
+  // Remove possíveis inscrições antigas
+  const stored = JSON.parse(localStorage.getItem("inscricoes")) || {}
+
+  // ❌ Garante que não esteja inscrita em outro time
+  if (stored[jogoId] && stored[jogoId].nome === player_name && stored[jogoId].time !== "rosa") {
+    delete stored[jogoId]
+  }
+
+  // ✅ Salva a nova inscrição
+  stored[jogoId] = temp
+  localStorage.setItem("inscricoes", JSON.stringify(stored))
+  localStorage.removeItem("inscricao_temp")
+
+  setShowSuccess(true)
+}
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
@@ -129,18 +195,14 @@ export default function Posicao() {
           </h2>
 
           <div className="relative bg-green-500 rounded-lg p-4 aspect-[3/4] max-w-xs sm:max-w-md mx-auto">
-            {/* marcações */}
             <div className="absolute inset-2 border-2 border-white rounded">
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 sm:w-20 sm:h-20 border-2 border-white rounded-full"></div>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-white rounded-full"></div>
               <div className="absolute left-0 right-0 top-1/2 h-0.5 bg-white -translate-y-1/2"></div>
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 sm:w-16 h-6 sm:h-8 border-2 border-white border-t-0"></div>
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 sm:w-16 h-6 sm:h-8 border-2 border-white border-b-0"></div>
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 sm:w-24 h-10 sm:h-12 border-2 border-white border-t-0"></div>
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 sm:w-24 h-10 sm:h-12 border-2 border-white border-b-0"></div>
             </div>
 
-            {/* posições */}
             {fieldPositions.map((pos) => (
               <div
                 key={pos.id}
@@ -165,7 +227,7 @@ export default function Posicao() {
             ))}
           </div>
 
-          {/* Banco de reservas */}
+          {/* Banco */}
           <div className="mt-6">
             <h3 className="text-base sm:text-lg font-semibold text-pink-600 mb-3">
               Banco de Reservas
@@ -204,8 +266,8 @@ export default function Posicao() {
                 key={position.id}
                 className={`p-3 rounded-lg ${
                   position.available
-                    ? "bg-pink-100 cursor-default"
-                    : "bg-gray-100 cursor-default"
+                    ? "bg-pink-100"
+                    : "bg-gray-100"
                 }`}
               >
                 <div className="font-bold text-pink-600 text-sm sm:text-base">
@@ -233,7 +295,7 @@ export default function Posicao() {
         </div>
       </div>
 
-      {/* Modal de confirmação de posição */}
+      {/* Modal confirmação */}
       {selectedPosition && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div
@@ -264,7 +326,7 @@ export default function Posicao() {
         </div>
       )}
 
-      {/* Modal de sucesso */}
+      {/* Modal sucesso */}
       {showSuccess && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div
@@ -287,7 +349,7 @@ export default function Posicao() {
         </div>
       )}
 
-      {/* Modal de erro - Nenhuma posição selecionada */}
+      {/* Modal erro */}
       {showNoSelection && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div
