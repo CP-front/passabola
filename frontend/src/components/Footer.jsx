@@ -1,9 +1,12 @@
 import { FaInstagram, FaYoutube } from "react-icons/fa";
 import passaBola from "../assets/passaBola_3x1branco.png";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../components/AuthContext";
 
 const Footer = () => {
   const navigate = useNavigate();
+  const { openLoginModal, openRegisterModal } = useAuth();
+
   return (
      <footer className="bg-[#4C1D8F] text-white px-6 py-12" id="footer">
         <div className="max-w-7xl mx-auto">
@@ -31,12 +34,12 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-[#a990e2] hover:text-white">
+                  <a onClick={openRegisterModal} className="text-[#a990e2] hover:text-white cursor-pointer">
                     Cadastro
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-[#a990e2] hover:text-white">
+                  <a onClick={openLoginModal} className="text-[#a990e2] hover:text-white cursor-pointer">
                     Entrar
                   </a>
                 </li>

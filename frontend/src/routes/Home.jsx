@@ -9,9 +9,12 @@ import { FiShield } from "react-icons/fi";
 import { CiHeart } from "react-icons/ci";
 import { HiOutlineSparkles } from "react-icons/hi2";
 import { FaMapMarkedAlt } from "react-icons/fa";
+import {
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
+} from "recharts"; // ⬅️ importa o Recharts
 
 // --- 1. IMPORTAR O HOOK DE AUTENTICAÇÃO ---
-import { useAuth } from "../components/AuthContext"; // Ajuste o caminho se necessário
+import { useAuth } from "../components/AuthContext"; 
 
 const Home = () => {
   const navigate = useNavigate();
@@ -32,6 +35,15 @@ const Home = () => {
 
     }
   };
+
+    // --- Dados para o gráfico ---
+  const data = [
+    { semana: "08/10", jogadoras: 32 },
+    { semana: "15/10", jogadoras: 26 },
+    { semana: "12/10", jogadoras: 29 },
+    { semana: "29/10", jogadoras: 34 },
+    { semana: "01/11", jogadoras: 25 },
+  ];
   
   return (
     <section className="bg-gray-100 text-center px-6 py-16">
@@ -150,6 +162,49 @@ const Home = () => {
             </p>
           </div>
 
+        </div>
+      </section>
+
+      {/* Parte Estatística */}
+      <section className="bg-white mt-16 rounded-lg shadow-sm px-6 py-12">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-[#4C1D8F] mb-2">
+            Participação nas Últimas Semanas
+          </h2>
+          <p className="text-purple-600 mb-8">
+            Acompanhe o crescimento da comunidade de jogadoras que participam dos encontros semanais.
+          </p>
+
+          {/* --- Gráfico Responsivo --- */}
+          <div className="w-full h-72">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
+                <XAxis dataKey="semana" tick={{ fill: "#4C1D8F" }} />
+                <YAxis tick={{ fill: "#4C1D8F" }} />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#fff",
+                    borderRadius: "8px",
+                    border: "1px solid #E5E7EB",
+                    color: "#4C1D8F",
+                  }}
+                />
+                <Bar
+                  dataKey="jogadoras"
+                  fill="url(#colorJogadoras)"
+                  radius={[8, 8, 0, 0]}
+                  barSize={40}
+                />
+                <defs>
+                  <linearGradient id="colorJogadoras" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#ec4899" stopOpacity={0.9} />
+                    <stop offset="100%" stopColor="#8b5cf6" stopOpacity={0.8} />
+                  </linearGradient>
+                </defs>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </section>
 
