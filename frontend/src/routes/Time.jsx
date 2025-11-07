@@ -51,7 +51,6 @@ export default function Time() {
         </button>
       </div>
 
-      {/* Título (AGORA DINÂMICO) */}
       <div className="text-center mb-10">
         <h1 className="text-3xl font-bold text-purple-600">Escolha Seu Time</h1>
         <p className="text-purple-400 mt-2">

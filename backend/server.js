@@ -85,9 +85,9 @@ app.get("/api/jogos", async (req, res) => {
 // =========================================
 app.post("/cadastro", async (req, res) => {
   try {
-    const { nome, cpf, email, cep, telefone, senha, confirmarSenha } = req.body
+    const { nome, cpf, email, cep, telefone, posicao, senha, confirmarSenha } = req.body
 
-    if (!nome || !cpf || !email || !cep || !telefone || !senha || !confirmarSenha) {
+    if (!nome || !cpf || !email || !cep || !telefone || !posicao || !senha || !confirmarSenha) {
       return res.status(400).json({ error: "Preencha todos os campos" })
     }
 
@@ -110,6 +110,7 @@ app.post("/cadastro", async (req, res) => {
       email,
       cep,
       telefone,
+      posicao,
       senha: hashSenha,
     }
 

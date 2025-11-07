@@ -69,7 +69,7 @@ export default function ModalLogin({ isOpen, onClose, setModalType }) {
             required
             onChange={handleChange}
           />
-          <button className="bg-purple-600 text-white py-2 rounded hover:bg-purple-800 cursor-pointer">
+          <button className="bg-purple-600 text-white py-2 rounded hover:bg-purple-800 cursor-pointer font-semibold">
             Entrar
           </button>
         </form>

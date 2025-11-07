@@ -4,12 +4,13 @@ import { useEffect, useState } from "react"
 import { ArrowLeft, Check, Plus } from "lucide-react"
 import { useNavigate, useParams } from "react-router-dom"
 import { useAuth } from "../components/AuthContext"
+import mockEncontros from "../../../backend/data/encontros.json";
 
 export default function Posicao() {
   const navigate = useNavigate()
   const { user } = useAuth()
   const { jogoId } = useParams()
-
+  const [jogo, setJogo] = useState(null);
   const player_name = user?.nome?.split(" ")[0] || "Jogadora"
 
   // Estado inicial
@@ -43,6 +44,11 @@ export default function Posicao() {
   const [selectedPosition, setSelectedPosition] = useState(null)
   const [showSuccess, setShowSuccess] = useState(false)
   const [showNoSelection, setShowNoSelection] = useState(false)
+
+  useEffect(() => {
+  const found = mockEncontros.find((item) => item.id === Number(jogoId));
+  if (found) setJogo(found);
+}, [jogoId]);
 
   // ✅ Carrega a inscrição salva no localStorage
   useEffect(() => {
@@ -183,7 +189,7 @@ export default function Posicao() {
           </h1>
         </div>
         <p className="text-xs sm:text-sm text-pink-600 sm:ml-28 mb-6">
-          Playball Pompeia - 09/06/2025
+          {jogo ? `${jogo.local} - ${jogo.data}` : "Carregando..."}
         </p>
       </div>
 
@@ -305,7 +311,7 @@ export default function Posicao() {
 
           <div className="relative bg-white rounded-lg shadow-lg w-[350px] p-6 text-center z-10">
             <h2 className="text-lg font-bold text-pink-600 mb-4">
-              Confirmar inscrição para {selectedPosition.name}?
+              Se inscrever para {selectedPosition.name}?
             </h2>
 
             <div className="flex justify-center gap-4">
