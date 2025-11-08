@@ -4,6 +4,14 @@
 
 O projeto busca **reduzir a desorganização** nos encontros presenciais, **aumentar o comprometimento** das jogadoras e criar um ambiente de **comunidade e oportunidades** para o futebol feminino.  
 
+🔗 **Deploy Vercel:** [Clique aqui para abrir](https://passabola-git-main-rotadeos-projects.vercel.app)
+
+🔗 **Repositório do Git Hub:** [Clique aqui para abrir](https://github.com/CP-front/passabola)
+
+---
+
+![Site](./frontend/src/assets/passabola.png)
+
 ---
 
 ## 🎯 Objetivos do Projeto
